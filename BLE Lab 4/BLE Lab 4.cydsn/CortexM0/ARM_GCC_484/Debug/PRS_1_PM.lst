@@ -1,0 +1,980 @@
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PRS_1_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.data
+  18              		.align	2
+  19              		.type	PRS_1_backup, %object
+  20              		.size	PRS_1_backup, 5
+  21              	PRS_1_backup:
+  22 0000 00       		.byte	0
+  23 0001 00       		.byte	0
+  24 0002 FF       		.byte	-1
+  25 0003 FF       		.byte	-1
+  26 0004 B8       		.byte	-72
+  27 0005 000000   		.section	.text.PRS_1_SaveConfig,"ax",%progbits
+  28              		.align	2
+  29              		.global	PRS_1_SaveConfig
+  30              		.code	16
+  31              		.thumb_func
+  32              		.type	PRS_1_SaveConfig, %function
+  33              	PRS_1_SaveConfig:
+  34              	.LFB2:
+  35              		.file 1 ".\\Generated_Source\\PSoC4\\PRS_1_PM.c"
+   1:.\Generated_Source\PSoC4/PRS_1_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/PRS_1_PM.c **** * File Name: PRS_1_PM.c
+   3:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Version 2.20
+   4:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+   5:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  This file provides Sleep/WakeUp APIs functionality of the PrISM component
+   7:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+   8:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Note:
+   9:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+  10:.\Generated_Source\PSoC4/PRS_1_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/PRS_1_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC4/PRS_1_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC4/PRS_1_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/PRS_1_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+  17:.\Generated_Source\PSoC4/PRS_1_PM.c **** #include "PRS_1.h"
+  18:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+  19:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+  20:.\Generated_Source\PSoC4/PRS_1_PM.c **** /***************************************
+  21:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Local data allocation
+  22:.\Generated_Source\PSoC4/PRS_1_PM.c **** ***************************************/
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 2
+
+
+  23:.\Generated_Source\PSoC4/PRS_1_PM.c **** static PRS_1_BACKUP_STRUCT  PRS_1_backup = 
+  24:.\Generated_Source\PSoC4/PRS_1_PM.c **** {
+  25:.\Generated_Source\PSoC4/PRS_1_PM.c ****     /* enableState */
+  26:.\Generated_Source\PSoC4/PRS_1_PM.c ****     0u,
+  27:.\Generated_Source\PSoC4/PRS_1_PM.c ****     /* cr */
+  28:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #if(!PRS_1_PULSE_TYPE_HARDCODED)
+  29:.\Generated_Source\PSoC4/PRS_1_PM.c ****        (((PRS_1_GREATERTHAN_OR_EQUAL == PRS_1_COMPARE0) ? \
+  30:.\Generated_Source\PSoC4/PRS_1_PM.c ****                                                 PRS_1_CTRL_COMPARE_TYPE0_GREATER_THAN_OR_EQUAL : 0u
+  31:.\Generated_Source\PSoC4/PRS_1_PM.c ****         ((PRS_1_GREATERTHAN_OR_EQUAL == PRS_1_COMPARE1) ? \
+  32:.\Generated_Source\PSoC4/PRS_1_PM.c ****                                                 PRS_1_CTRL_COMPARE_TYPE1_GREATER_THAN_OR_EQUAL : 0u
+  33:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #endif /* End PRS_1_PULSE_TYPE_HARDCODED */
+  34:.\Generated_Source\PSoC4/PRS_1_PM.c ****     /* seed */    
+  35:.\Generated_Source\PSoC4/PRS_1_PM.c ****     PRS_1_SEED,
+  36:.\Generated_Source\PSoC4/PRS_1_PM.c ****     /* seed_copy */    
+  37:.\Generated_Source\PSoC4/PRS_1_PM.c ****     PRS_1_SEED,
+  38:.\Generated_Source\PSoC4/PRS_1_PM.c ****     /* polynom */
+  39:.\Generated_Source\PSoC4/PRS_1_PM.c ****     PRS_1_POLYNOM,
+  40:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #if(CY_UDB_V0)
+  41:.\Generated_Source\PSoC4/PRS_1_PM.c ****         /* density0 */
+  42:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_DENSITY0,
+  43:.\Generated_Source\PSoC4/PRS_1_PM.c ****         /* density1 */
+  44:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_DENSITY1,
+  45:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #endif /*End CY_UDB_V0*/
+  46:.\Generated_Source\PSoC4/PRS_1_PM.c **** };
+  47:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+  48:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+  49:.\Generated_Source\PSoC4/PRS_1_PM.c **** /*******************************************************************************
+  50:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Function Name: PRS_1_SaveConfig
+  51:.\Generated_Source\PSoC4/PRS_1_PM.c **** ********************************************************************************
+  52:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+  53:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Summary:
+  54:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  Saves the current user configuration.
+  55:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  
+  56:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Parameters:  
+  57:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  None.
+  58:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+  59:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Return: 
+  60:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  None.
+  61:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+  62:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Global Variables:
+  63:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  PRS_1_backup - modified when non-retention registers are saved.
+  64:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+  65:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Reentrant:
+  66:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  No.
+  67:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+  68:.\Generated_Source\PSoC4/PRS_1_PM.c **** *******************************************************************************/
+  69:.\Generated_Source\PSoC4/PRS_1_PM.c **** void PRS_1_SaveConfig(void) 
+  70:.\Generated_Source\PSoC4/PRS_1_PM.c **** {
+  36              		.loc 1 70 0
+  37              		.cfi_startproc
+  38 0000 80B5     		push	{r7, lr}
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 00AF     		add	r7, sp, #0
+  43              		.cfi_def_cfa_register 7
+  71:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #if (CY_UDB_V0)
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 3
+
+
+  72:.\Generated_Source\PSoC4/PRS_1_PM.c ****         #if(!PRS_1_PULSE_TYPE_HARDCODED)
+  73:.\Generated_Source\PSoC4/PRS_1_PM.c ****             PRS_1_backup.cr = PRS_1_CONTROL_REG;
+  74:.\Generated_Source\PSoC4/PRS_1_PM.c ****         #endif /* End PRS_1_PULSE_TYPE_HARDCODED */
+  75:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_backup.seed = PRS_1_ReadSeed();
+  76:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_backup.seed_copy = CY_GET_REG8(PRS_1_SEED_COPY_PTR);
+  77:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_backup.polynom = PRS_1_ReadPolynomial();
+  78:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_backup.density0 = PRS_1_ReadPulse0();
+  79:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_backup.density1 = PRS_1_ReadPulse1();
+  80:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #else /* CY_UDB_V1 */
+  81:.\Generated_Source\PSoC4/PRS_1_PM.c ****         #if(!PRS_1_PULSE_TYPE_HARDCODED)
+  82:.\Generated_Source\PSoC4/PRS_1_PM.c ****             PRS_1_backup.cr = PRS_1_CONTROL_REG;
+  44              		.loc 1 82 0
+  45 0004 0B4B     		ldr	r3, .L2
+  46 0006 1B78     		ldrb	r3, [r3]
+  47 0008 DAB2     		uxtb	r2, r3
+  48 000a 0B4B     		ldr	r3, .L2+4
+  49 000c 5A70     		strb	r2, [r3, #1]
+  83:.\Generated_Source\PSoC4/PRS_1_PM.c ****         #endif /* End PRS_1_PULSE_TYPE_HARDCODED */
+  84:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_backup.seed = PRS_1_ReadSeed();
+  50              		.loc 1 84 0
+  51 000e FFF7FEFF 		bl	PRS_1_ReadSeed
+  52 0012 031C     		mov	r3, r0
+  53 0014 1A1C     		mov	r2, r3
+  54 0016 084B     		ldr	r3, .L2+4
+  55 0018 9A70     		strb	r2, [r3, #2]
+  85:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_backup.seed_copy = CY_GET_REG8(PRS_1_SEED_COPY_PTR);
+  56              		.loc 1 85 0
+  57 001a 084B     		ldr	r3, .L2+8
+  58 001c 1B78     		ldrb	r3, [r3]
+  59 001e DAB2     		uxtb	r2, r3
+  60 0020 054B     		ldr	r3, .L2+4
+  61 0022 DA70     		strb	r2, [r3, #3]
+  86:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_backup.polynom = PRS_1_ReadPolynomial();
+  62              		.loc 1 86 0
+  63 0024 FFF7FEFF 		bl	PRS_1_ReadPolynomial
+  64 0028 031C     		mov	r3, r0
+  65 002a 1A1C     		mov	r2, r3
+  66 002c 024B     		ldr	r3, .L2+4
+  67 002e 1A71     		strb	r2, [r3, #4]
+  87:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #endif  /* CY_UDB_V0 */
+  88:.\Generated_Source\PSoC4/PRS_1_PM.c **** }
+  68              		.loc 1 88 0
+  69 0030 BD46     		mov	sp, r7
+  70              		@ sp needed
+  71 0032 80BD     		pop	{r7, pc}
+  72              	.L3:
+  73              		.align	2
+  74              	.L2:
+  75 0034 72000F40 		.word	1074724978
+  76 0038 00000000 		.word	PRS_1_backup
+  77 003c 42000F40 		.word	1074724930
+  78              		.cfi_endproc
+  79              	.LFE2:
+  80              		.size	PRS_1_SaveConfig, .-PRS_1_SaveConfig
+  81              		.section	.text.PRS_1_RestoreConfig,"ax",%progbits
+  82              		.align	2
+  83              		.global	PRS_1_RestoreConfig
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 4
+
+
+  84              		.code	16
+  85              		.thumb_func
+  86              		.type	PRS_1_RestoreConfig, %function
+  87              	PRS_1_RestoreConfig:
+  88              	.LFB3:
+  89:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+  90:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+  91:.\Generated_Source\PSoC4/PRS_1_PM.c **** /*******************************************************************************
+  92:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Function Name: PRS_1_RestoreConfig
+  93:.\Generated_Source\PSoC4/PRS_1_PM.c **** ********************************************************************************
+  94:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+  95:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Summary:
+  96:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  Restores the current user configuration.
+  97:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+  98:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Parameters:  
+  99:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  None.
+ 100:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 101:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Return: 
+ 102:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  None.
+ 103:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 104:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Global Variables:
+ 105:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  PRS_1_backup - used when non-retention registers are restored.
+ 106:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 107:.\Generated_Source\PSoC4/PRS_1_PM.c **** *******************************************************************************/
+ 108:.\Generated_Source\PSoC4/PRS_1_PM.c **** void PRS_1_RestoreConfig(void) 
+ 109:.\Generated_Source\PSoC4/PRS_1_PM.c **** {
+  89              		.loc 1 109 0
+  90              		.cfi_startproc
+  91 0000 80B5     		push	{r7, lr}
+  92              		.cfi_def_cfa_offset 8
+  93              		.cfi_offset 7, -8
+  94              		.cfi_offset 14, -4
+  95 0002 00AF     		add	r7, sp, #0
+  96              		.cfi_def_cfa_register 7
+ 110:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #if (CY_UDB_V0)
+ 111:.\Generated_Source\PSoC4/PRS_1_PM.c ****     
+ 112:.\Generated_Source\PSoC4/PRS_1_PM.c ****         uint8 enableInterrupts;
+ 113:.\Generated_Source\PSoC4/PRS_1_PM.c ****         
+ 114:.\Generated_Source\PSoC4/PRS_1_PM.c ****         #if(!PRS_1_PULSE_TYPE_HARDCODED)
+ 115:.\Generated_Source\PSoC4/PRS_1_PM.c ****             PRS_1_CONTROL_REG = PRS_1_backup.cr;
+ 116:.\Generated_Source\PSoC4/PRS_1_PM.c ****         #endif /* End PRS_1_PULSE_TYPE_HARDCODED */
+ 117:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+ 118:.\Generated_Source\PSoC4/PRS_1_PM.c ****         CY_SET_REG8(PRS_1_SEED_COPY_PTR, PRS_1_backup.seed_copy);
+ 119:.\Generated_Source\PSoC4/PRS_1_PM.c ****         CY_SET_REG8(PRS_1_SEED_PTR, PRS_1_backup.seed);
+ 120:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_WritePolynomial(PRS_1_backup.polynom);
+ 121:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_WritePulse0(PRS_1_backup.density0);
+ 122:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_WritePulse1(PRS_1_backup.density1);
+ 123:.\Generated_Source\PSoC4/PRS_1_PM.c ****         
+ 124:.\Generated_Source\PSoC4/PRS_1_PM.c ****         enableInterrupts = CyEnterCriticalSection();
+ 125:.\Generated_Source\PSoC4/PRS_1_PM.c ****         /* Set FIFO0_CLR bit to use FIFO0 as a simple one-byte buffer*/
+ 126:.\Generated_Source\PSoC4/PRS_1_PM.c ****         CY_SET_REG8(PRS_1_AUX_CONTROL_PTR, 
+ 127:.\Generated_Source\PSoC4/PRS_1_PM.c ****                         CY_GET_REG8(PRS_1_AUX_CONTROL_PTR) | PRS_1_FIFO0_CLR);
+ 128:.\Generated_Source\PSoC4/PRS_1_PM.c ****         CyExitCriticalSection(enableInterrupts);
+ 129:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+ 130:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #else   /* CY_UDB_V1 */
+ 131:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+ 132:.\Generated_Source\PSoC4/PRS_1_PM.c ****         #if(!PRS_1_PULSE_TYPE_HARDCODED)
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 5
+
+
+ 133:.\Generated_Source\PSoC4/PRS_1_PM.c ****             PRS_1_CONTROL_REG = PRS_1_backup.cr;
+  97              		.loc 1 133 0
+  98 0004 094B     		ldr	r3, .L5
+  99 0006 0A4A     		ldr	r2, .L5+4
+ 100 0008 5278     		ldrb	r2, [r2, #1]
+ 101 000a 1A70     		strb	r2, [r3]
+ 134:.\Generated_Source\PSoC4/PRS_1_PM.c ****         #endif /* End PRS_1_PULSE_TYPE_HARDCODED */
+ 135:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+ 136:.\Generated_Source\PSoC4/PRS_1_PM.c ****         CY_SET_REG8(PRS_1_SEED_COPY_PTR, PRS_1_backup.seed_copy);
+ 102              		.loc 1 136 0
+ 103 000c 094B     		ldr	r3, .L5+8
+ 104 000e 084A     		ldr	r2, .L5+4
+ 105 0010 D278     		ldrb	r2, [r2, #3]
+ 106 0012 1A70     		strb	r2, [r3]
+ 137:.\Generated_Source\PSoC4/PRS_1_PM.c ****         CY_SET_REG8(PRS_1_SEED_PTR, PRS_1_backup.seed);
+ 107              		.loc 1 137 0
+ 108 0014 084B     		ldr	r3, .L5+12
+ 109 0016 064A     		ldr	r2, .L5+4
+ 110 0018 9278     		ldrb	r2, [r2, #2]
+ 111 001a 1A70     		strb	r2, [r3]
+ 138:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_WritePolynomial(PRS_1_backup.polynom);
+ 112              		.loc 1 138 0
+ 113 001c 044B     		ldr	r3, .L5+4
+ 114 001e 1B79     		ldrb	r3, [r3, #4]
+ 115 0020 181C     		mov	r0, r3
+ 116 0022 FFF7FEFF 		bl	PRS_1_WritePolynomial
+ 139:.\Generated_Source\PSoC4/PRS_1_PM.c ****     
+ 140:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #endif  /* End CY_UDB_V0 */
+ 141:.\Generated_Source\PSoC4/PRS_1_PM.c **** }
+ 117              		.loc 1 141 0
+ 118 0026 BD46     		mov	sp, r7
+ 119              		@ sp needed
+ 120 0028 80BD     		pop	{r7, pc}
+ 121              	.L6:
+ 122 002a C046     		.align	2
+ 123              	.L5:
+ 124 002c 72000F40 		.word	1074724978
+ 125 0030 00000000 		.word	PRS_1_backup
+ 126 0034 42000F40 		.word	1074724930
+ 127 0038 02000F40 		.word	1074724866
+ 128              		.cfi_endproc
+ 129              	.LFE3:
+ 130              		.size	PRS_1_RestoreConfig, .-PRS_1_RestoreConfig
+ 131              		.section	.text.PRS_1_Sleep,"ax",%progbits
+ 132              		.align	2
+ 133              		.global	PRS_1_Sleep
+ 134              		.code	16
+ 135              		.thumb_func
+ 136              		.type	PRS_1_Sleep, %function
+ 137              	PRS_1_Sleep:
+ 138              	.LFB4:
+ 142:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+ 143:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+ 144:.\Generated_Source\PSoC4/PRS_1_PM.c **** /*******************************************************************************
+ 145:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Function Name: PRS_1_Sleep
+ 146:.\Generated_Source\PSoC4/PRS_1_PM.c **** ********************************************************************************
+ 147:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 6
+
+
+ 148:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Summary:
+ 149:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  Stops and saves the user configuration
+ 150:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  
+ 151:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Parameters:  
+ 152:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  None.
+ 153:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 154:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Return: 
+ 155:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  None.
+ 156:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 157:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Global Variables:
+ 158:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  PRS_1_backup - modified when non-retention registers are saved.
+ 159:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 160:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Reentrant:
+ 161:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  No.
+ 162:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 163:.\Generated_Source\PSoC4/PRS_1_PM.c **** *******************************************************************************/
+ 164:.\Generated_Source\PSoC4/PRS_1_PM.c **** void PRS_1_Sleep(void) 
+ 165:.\Generated_Source\PSoC4/PRS_1_PM.c **** {
+ 139              		.loc 1 165 0
+ 140              		.cfi_startproc
+ 141 0000 80B5     		push	{r7, lr}
+ 142              		.cfi_def_cfa_offset 8
+ 143              		.cfi_offset 7, -8
+ 144              		.cfi_offset 14, -4
+ 145 0002 00AF     		add	r7, sp, #0
+ 146              		.cfi_def_cfa_register 7
+ 166:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #if(!PRS_1_PULSE_TYPE_HARDCODED)
+ 167:.\Generated_Source\PSoC4/PRS_1_PM.c ****         if((PRS_1_CONTROL_REG & PRS_1_CTRL_ENABLE) != 0u) 
+ 147              		.loc 1 167 0
+ 148 0004 094B     		ldr	r3, .L10
+ 149 0006 1B78     		ldrb	r3, [r3]
+ 150 0008 DBB2     		uxtb	r3, r3
+ 151 000a 1A1C     		mov	r2, r3
+ 152 000c 0123     		mov	r3, #1
+ 153 000e 1340     		and	r3, r2
+ 154 0010 03D0     		beq	.L8
+ 168:.\Generated_Source\PSoC4/PRS_1_PM.c ****         {
+ 169:.\Generated_Source\PSoC4/PRS_1_PM.c ****             PRS_1_backup.enableState = 1u;
+ 155              		.loc 1 169 0
+ 156 0012 074B     		ldr	r3, .L10+4
+ 157 0014 0122     		mov	r2, #1
+ 158 0016 1A70     		strb	r2, [r3]
+ 159 0018 02E0     		b	.L9
+ 160              	.L8:
+ 170:.\Generated_Source\PSoC4/PRS_1_PM.c ****         }
+ 171:.\Generated_Source\PSoC4/PRS_1_PM.c ****         else
+ 172:.\Generated_Source\PSoC4/PRS_1_PM.c ****         {
+ 173:.\Generated_Source\PSoC4/PRS_1_PM.c ****             PRS_1_backup.enableState = 0u;
+ 161              		.loc 1 173 0
+ 162 001a 054B     		ldr	r3, .L10+4
+ 163 001c 0022     		mov	r2, #0
+ 164 001e 1A70     		strb	r2, [r3]
+ 165              	.L9:
+ 174:.\Generated_Source\PSoC4/PRS_1_PM.c ****         }
+ 175:.\Generated_Source\PSoC4/PRS_1_PM.c ****     #endif /* End PRS_1_PULSE_TYPE_HARDCODED */
+ 176:.\Generated_Source\PSoC4/PRS_1_PM.c ****     PRS_1_Stop();
+ 166              		.loc 1 176 0
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 7
+
+
+ 167 0020 FFF7FEFF 		bl	PRS_1_Stop
+ 177:.\Generated_Source\PSoC4/PRS_1_PM.c ****     PRS_1_SaveConfig();
+ 168              		.loc 1 177 0
+ 169 0024 FFF7FEFF 		bl	PRS_1_SaveConfig
+ 178:.\Generated_Source\PSoC4/PRS_1_PM.c **** }
+ 170              		.loc 1 178 0
+ 171 0028 BD46     		mov	sp, r7
+ 172              		@ sp needed
+ 173 002a 80BD     		pop	{r7, pc}
+ 174              	.L11:
+ 175              		.align	2
+ 176              	.L10:
+ 177 002c 72000F40 		.word	1074724978
+ 178 0030 00000000 		.word	PRS_1_backup
+ 179              		.cfi_endproc
+ 180              	.LFE4:
+ 181              		.size	PRS_1_Sleep, .-PRS_1_Sleep
+ 182              		.section	.text.PRS_1_Wakeup,"ax",%progbits
+ 183              		.align	2
+ 184              		.global	PRS_1_Wakeup
+ 185              		.code	16
+ 186              		.thumb_func
+ 187              		.type	PRS_1_Wakeup, %function
+ 188              	PRS_1_Wakeup:
+ 189              	.LFB5:
+ 179:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+ 180:.\Generated_Source\PSoC4/PRS_1_PM.c **** 
+ 181:.\Generated_Source\PSoC4/PRS_1_PM.c **** /*******************************************************************************
+ 182:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Function Name: PRS_1_Wakeup
+ 183:.\Generated_Source\PSoC4/PRS_1_PM.c **** ********************************************************************************
+ 184:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 185:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Summary:
+ 186:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  Restores and enables the user configuration
+ 187:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  
+ 188:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Parameters:  
+ 189:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  None.
+ 190:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 191:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Return: 
+ 192:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  None.
+ 193:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 194:.\Generated_Source\PSoC4/PRS_1_PM.c **** * Global Variables:
+ 195:.\Generated_Source\PSoC4/PRS_1_PM.c **** *  PRS_1_backup - used when non-retention registers are restored.
+ 196:.\Generated_Source\PSoC4/PRS_1_PM.c **** *
+ 197:.\Generated_Source\PSoC4/PRS_1_PM.c **** *******************************************************************************/
+ 198:.\Generated_Source\PSoC4/PRS_1_PM.c **** void PRS_1_Wakeup(void) 
+ 199:.\Generated_Source\PSoC4/PRS_1_PM.c **** {
+ 190              		.loc 1 199 0
+ 191              		.cfi_startproc
+ 192 0000 80B5     		push	{r7, lr}
+ 193              		.cfi_def_cfa_offset 8
+ 194              		.cfi_offset 7, -8
+ 195              		.cfi_offset 14, -4
+ 196 0002 00AF     		add	r7, sp, #0
+ 197              		.cfi_def_cfa_register 7
+ 200:.\Generated_Source\PSoC4/PRS_1_PM.c ****     PRS_1_RestoreConfig();
+ 198              		.loc 1 200 0
+ 199 0004 FFF7FEFF 		bl	PRS_1_RestoreConfig
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 8
+
+
+ 201:.\Generated_Source\PSoC4/PRS_1_PM.c ****     if(PRS_1_backup.enableState != 0u)
+ 200              		.loc 1 201 0
+ 201 0008 034B     		ldr	r3, .L14
+ 202 000a 1B78     		ldrb	r3, [r3]
+ 203 000c 002B     		cmp	r3, #0
+ 204 000e 01D0     		beq	.L12
+ 202:.\Generated_Source\PSoC4/PRS_1_PM.c ****     {
+ 203:.\Generated_Source\PSoC4/PRS_1_PM.c ****         PRS_1_Enable();
+ 205              		.loc 1 203 0
+ 206 0010 FFF7FEFF 		bl	PRS_1_Enable
+ 207              	.L12:
+ 204:.\Generated_Source\PSoC4/PRS_1_PM.c ****     } 
+ 205:.\Generated_Source\PSoC4/PRS_1_PM.c **** }
+ 208              		.loc 1 205 0
+ 209 0014 BD46     		mov	sp, r7
+ 210              		@ sp needed
+ 211 0016 80BD     		pop	{r7, pc}
+ 212              	.L15:
+ 213              		.align	2
+ 214              	.L14:
+ 215 0018 00000000 		.word	PRS_1_backup
+ 216              		.cfi_endproc
+ 217              	.LFE5:
+ 218              		.size	PRS_1_Wakeup, .-PRS_1_Wakeup
+ 219              		.text
+ 220              	.Letext0:
+ 221              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 222              		.file 3 ".\\Generated_Source\\PSoC4\\PRS_1.h"
+ 223              		.section	.debug_info,"",%progbits
+ 224              	.Ldebug_info0:
+ 225 0000 44010000 		.4byte	0x144
+ 226 0004 0400     		.2byte	0x4
+ 227 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 228 000a 04       		.byte	0x4
+ 229 000b 01       		.uleb128 0x1
+ 230 000c 9D000000 		.4byte	.LASF24
+ 231 0010 01       		.byte	0x1
+ 232 0011 19010000 		.4byte	.LASF25
+ 233 0015 7C010000 		.4byte	.LASF26
+ 234 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 235 001d 00000000 		.4byte	0
+ 236 0021 00000000 		.4byte	.Ldebug_line0
+ 237 0025 02       		.uleb128 0x2
+ 238 0026 01       		.byte	0x1
+ 239 0027 06       		.byte	0x6
+ 240 0028 CD010000 		.4byte	.LASF0
+ 241 002c 02       		.uleb128 0x2
+ 242 002d 01       		.byte	0x1
+ 243 002e 08       		.byte	0x8
+ 244 002f 3D010000 		.4byte	.LASF1
+ 245 0033 02       		.uleb128 0x2
+ 246 0034 02       		.byte	0x2
+ 247 0035 05       		.byte	0x5
+ 248 0036 F2010000 		.4byte	.LASF2
+ 249 003a 02       		.uleb128 0x2
+ 250 003b 02       		.byte	0x2
+ 251 003c 07       		.byte	0x7
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 9
+
+
+ 252 003d BA010000 		.4byte	.LASF3
+ 253 0041 02       		.uleb128 0x2
+ 254 0042 04       		.byte	0x4
+ 255 0043 05       		.byte	0x5
+ 256 0044 67010000 		.4byte	.LASF4
+ 257 0048 02       		.uleb128 0x2
+ 258 0049 04       		.byte	0x4
+ 259 004a 07       		.byte	0x7
+ 260 004b 5A000000 		.4byte	.LASF5
+ 261 004f 02       		.uleb128 0x2
+ 262 0050 08       		.byte	0x8
+ 263 0051 05       		.byte	0x5
+ 264 0052 00000000 		.4byte	.LASF6
+ 265 0056 02       		.uleb128 0x2
+ 266 0057 08       		.byte	0x8
+ 267 0058 07       		.byte	0x7
+ 268 0059 6C000000 		.4byte	.LASF7
+ 269 005d 03       		.uleb128 0x3
+ 270 005e 04       		.byte	0x4
+ 271 005f 05       		.byte	0x5
+ 272 0060 696E7400 		.ascii	"int\000"
+ 273 0064 02       		.uleb128 0x2
+ 274 0065 04       		.byte	0x4
+ 275 0066 07       		.byte	0x7
+ 276 0067 1A000000 		.4byte	.LASF8
+ 277 006b 04       		.uleb128 0x4
+ 278 006c 54000000 		.4byte	.LASF12
+ 279 0070 02       		.byte	0x2
+ 280 0071 A1       		.byte	0xa1
+ 281 0072 2C000000 		.4byte	0x2c
+ 282 0076 02       		.uleb128 0x2
+ 283 0077 04       		.byte	0x4
+ 284 0078 04       		.byte	0x4
+ 285 0079 97000000 		.4byte	.LASF9
+ 286 007d 02       		.uleb128 0x2
+ 287 007e 08       		.byte	0x8
+ 288 007f 04       		.byte	0x4
+ 289 0080 75010000 		.4byte	.LASF10
+ 290 0084 02       		.uleb128 0x2
+ 291 0085 01       		.byte	0x1
+ 292 0086 08       		.byte	0x8
+ 293 0087 4B010000 		.4byte	.LASF11
+ 294 008b 05       		.uleb128 0x5
+ 295 008c FC010000 		.4byte	.LASF13
+ 296 0090 02       		.byte	0x2
+ 297 0091 4B01     		.2byte	0x14b
+ 298 0093 97000000 		.4byte	0x97
+ 299 0097 06       		.uleb128 0x6
+ 300 0098 6B000000 		.4byte	0x6b
+ 301 009c 02       		.uleb128 0x2
+ 302 009d 04       		.byte	0x4
+ 303 009e 07       		.byte	0x7
+ 304 009f 01020000 		.4byte	.LASF14
+ 305 00a3 07       		.uleb128 0x7
+ 306 00a4 05       		.byte	0x5
+ 307 00a5 03       		.byte	0x3
+ 308 00a6 33       		.byte	0x33
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 10
+
+
+ 309 00a7 E7000000 		.4byte	0xe7
+ 310 00ab 08       		.uleb128 0x8
+ 311 00ac 0E000000 		.4byte	.LASF15
+ 312 00b0 03       		.byte	0x3
+ 313 00b1 35       		.byte	0x35
+ 314 00b2 6B000000 		.4byte	0x6b
+ 315 00b6 00       		.byte	0
+ 316 00b7 09       		.uleb128 0x9
+ 317 00b8 637200   		.ascii	"cr\000"
+ 318 00bb 03       		.byte	0x3
+ 319 00bc 37       		.byte	0x37
+ 320 00bd 6B000000 		.4byte	0x6b
+ 321 00c1 01       		.byte	0x1
+ 322 00c2 08       		.uleb128 0x8
+ 323 00c3 70010000 		.4byte	.LASF16
+ 324 00c7 03       		.byte	0x3
+ 325 00c8 39       		.byte	0x39
+ 326 00c9 6B000000 		.4byte	0x6b
+ 327 00cd 02       		.byte	0x2
+ 328 00ce 08       		.uleb128 0x8
+ 329 00cf 50010000 		.4byte	.LASF17
+ 330 00d3 03       		.byte	0x3
+ 331 00d4 3A       		.byte	0x3a
+ 332 00d5 6B000000 		.4byte	0x6b
+ 333 00d9 03       		.byte	0x3
+ 334 00da 08       		.uleb128 0x8
+ 335 00db D9010000 		.4byte	.LASF18
+ 336 00df 03       		.byte	0x3
+ 337 00e0 3B       		.byte	0x3b
+ 338 00e1 6B000000 		.4byte	0x6b
+ 339 00e5 04       		.byte	0x4
+ 340 00e6 00       		.byte	0
+ 341 00e7 04       		.uleb128 0x4
+ 342 00e8 83000000 		.4byte	.LASF19
+ 343 00ec 03       		.byte	0x3
+ 344 00ed 40       		.byte	0x40
+ 345 00ee A3000000 		.4byte	0xa3
+ 346 00f2 0A       		.uleb128 0xa
+ 347 00f3 E1010000 		.4byte	.LASF20
+ 348 00f7 01       		.byte	0x1
+ 349 00f8 45       		.byte	0x45
+ 350 00f9 00000000 		.4byte	.LFB2
+ 351 00fd 40000000 		.4byte	.LFE2-.LFB2
+ 352 0101 01       		.uleb128 0x1
+ 353 0102 9C       		.byte	0x9c
+ 354 0103 0A       		.uleb128 0xa
+ 355 0104 27000000 		.4byte	.LASF21
+ 356 0108 01       		.byte	0x1
+ 357 0109 6C       		.byte	0x6c
+ 358 010a 00000000 		.4byte	.LFB3
+ 359 010e 3C000000 		.4byte	.LFE3-.LFB3
+ 360 0112 01       		.uleb128 0x1
+ 361 0113 9C       		.byte	0x9c
+ 362 0114 0A       		.uleb128 0xa
+ 363 0115 3B000000 		.4byte	.LASF22
+ 364 0119 01       		.byte	0x1
+ 365 011a A4       		.byte	0xa4
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 11
+
+
+ 366 011b 00000000 		.4byte	.LFB4
+ 367 011f 34000000 		.4byte	.LFE4-.LFB4
+ 368 0123 01       		.uleb128 0x1
+ 369 0124 9C       		.byte	0x9c
+ 370 0125 0A       		.uleb128 0xa
+ 371 0126 5A010000 		.4byte	.LASF23
+ 372 012a 01       		.byte	0x1
+ 373 012b C6       		.byte	0xc6
+ 374 012c 00000000 		.4byte	.LFB5
+ 375 0130 1C000000 		.4byte	.LFE5-.LFB5
+ 376 0134 01       		.uleb128 0x1
+ 377 0135 9C       		.byte	0x9c
+ 378 0136 0B       		.uleb128 0xb
+ 379 0137 47000000 		.4byte	.LASF27
+ 380 013b 01       		.byte	0x1
+ 381 013c 17       		.byte	0x17
+ 382 013d E7000000 		.4byte	0xe7
+ 383 0141 05       		.uleb128 0x5
+ 384 0142 03       		.byte	0x3
+ 385 0143 00000000 		.4byte	PRS_1_backup
+ 386 0147 00       		.byte	0
+ 387              		.section	.debug_abbrev,"",%progbits
+ 388              	.Ldebug_abbrev0:
+ 389 0000 01       		.uleb128 0x1
+ 390 0001 11       		.uleb128 0x11
+ 391 0002 01       		.byte	0x1
+ 392 0003 25       		.uleb128 0x25
+ 393 0004 0E       		.uleb128 0xe
+ 394 0005 13       		.uleb128 0x13
+ 395 0006 0B       		.uleb128 0xb
+ 396 0007 03       		.uleb128 0x3
+ 397 0008 0E       		.uleb128 0xe
+ 398 0009 1B       		.uleb128 0x1b
+ 399 000a 0E       		.uleb128 0xe
+ 400 000b 55       		.uleb128 0x55
+ 401 000c 17       		.uleb128 0x17
+ 402 000d 11       		.uleb128 0x11
+ 403 000e 01       		.uleb128 0x1
+ 404 000f 10       		.uleb128 0x10
+ 405 0010 17       		.uleb128 0x17
+ 406 0011 00       		.byte	0
+ 407 0012 00       		.byte	0
+ 408 0013 02       		.uleb128 0x2
+ 409 0014 24       		.uleb128 0x24
+ 410 0015 00       		.byte	0
+ 411 0016 0B       		.uleb128 0xb
+ 412 0017 0B       		.uleb128 0xb
+ 413 0018 3E       		.uleb128 0x3e
+ 414 0019 0B       		.uleb128 0xb
+ 415 001a 03       		.uleb128 0x3
+ 416 001b 0E       		.uleb128 0xe
+ 417 001c 00       		.byte	0
+ 418 001d 00       		.byte	0
+ 419 001e 03       		.uleb128 0x3
+ 420 001f 24       		.uleb128 0x24
+ 421 0020 00       		.byte	0
+ 422 0021 0B       		.uleb128 0xb
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 12
+
+
+ 423 0022 0B       		.uleb128 0xb
+ 424 0023 3E       		.uleb128 0x3e
+ 425 0024 0B       		.uleb128 0xb
+ 426 0025 03       		.uleb128 0x3
+ 427 0026 08       		.uleb128 0x8
+ 428 0027 00       		.byte	0
+ 429 0028 00       		.byte	0
+ 430 0029 04       		.uleb128 0x4
+ 431 002a 16       		.uleb128 0x16
+ 432 002b 00       		.byte	0
+ 433 002c 03       		.uleb128 0x3
+ 434 002d 0E       		.uleb128 0xe
+ 435 002e 3A       		.uleb128 0x3a
+ 436 002f 0B       		.uleb128 0xb
+ 437 0030 3B       		.uleb128 0x3b
+ 438 0031 0B       		.uleb128 0xb
+ 439 0032 49       		.uleb128 0x49
+ 440 0033 13       		.uleb128 0x13
+ 441 0034 00       		.byte	0
+ 442 0035 00       		.byte	0
+ 443 0036 05       		.uleb128 0x5
+ 444 0037 16       		.uleb128 0x16
+ 445 0038 00       		.byte	0
+ 446 0039 03       		.uleb128 0x3
+ 447 003a 0E       		.uleb128 0xe
+ 448 003b 3A       		.uleb128 0x3a
+ 449 003c 0B       		.uleb128 0xb
+ 450 003d 3B       		.uleb128 0x3b
+ 451 003e 05       		.uleb128 0x5
+ 452 003f 49       		.uleb128 0x49
+ 453 0040 13       		.uleb128 0x13
+ 454 0041 00       		.byte	0
+ 455 0042 00       		.byte	0
+ 456 0043 06       		.uleb128 0x6
+ 457 0044 35       		.uleb128 0x35
+ 458 0045 00       		.byte	0
+ 459 0046 49       		.uleb128 0x49
+ 460 0047 13       		.uleb128 0x13
+ 461 0048 00       		.byte	0
+ 462 0049 00       		.byte	0
+ 463 004a 07       		.uleb128 0x7
+ 464 004b 13       		.uleb128 0x13
+ 465 004c 01       		.byte	0x1
+ 466 004d 0B       		.uleb128 0xb
+ 467 004e 0B       		.uleb128 0xb
+ 468 004f 3A       		.uleb128 0x3a
+ 469 0050 0B       		.uleb128 0xb
+ 470 0051 3B       		.uleb128 0x3b
+ 471 0052 0B       		.uleb128 0xb
+ 472 0053 01       		.uleb128 0x1
+ 473 0054 13       		.uleb128 0x13
+ 474 0055 00       		.byte	0
+ 475 0056 00       		.byte	0
+ 476 0057 08       		.uleb128 0x8
+ 477 0058 0D       		.uleb128 0xd
+ 478 0059 00       		.byte	0
+ 479 005a 03       		.uleb128 0x3
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 13
+
+
+ 480 005b 0E       		.uleb128 0xe
+ 481 005c 3A       		.uleb128 0x3a
+ 482 005d 0B       		.uleb128 0xb
+ 483 005e 3B       		.uleb128 0x3b
+ 484 005f 0B       		.uleb128 0xb
+ 485 0060 49       		.uleb128 0x49
+ 486 0061 13       		.uleb128 0x13
+ 487 0062 38       		.uleb128 0x38
+ 488 0063 0B       		.uleb128 0xb
+ 489 0064 00       		.byte	0
+ 490 0065 00       		.byte	0
+ 491 0066 09       		.uleb128 0x9
+ 492 0067 0D       		.uleb128 0xd
+ 493 0068 00       		.byte	0
+ 494 0069 03       		.uleb128 0x3
+ 495 006a 08       		.uleb128 0x8
+ 496 006b 3A       		.uleb128 0x3a
+ 497 006c 0B       		.uleb128 0xb
+ 498 006d 3B       		.uleb128 0x3b
+ 499 006e 0B       		.uleb128 0xb
+ 500 006f 49       		.uleb128 0x49
+ 501 0070 13       		.uleb128 0x13
+ 502 0071 38       		.uleb128 0x38
+ 503 0072 0B       		.uleb128 0xb
+ 504 0073 00       		.byte	0
+ 505 0074 00       		.byte	0
+ 506 0075 0A       		.uleb128 0xa
+ 507 0076 2E       		.uleb128 0x2e
+ 508 0077 00       		.byte	0
+ 509 0078 3F       		.uleb128 0x3f
+ 510 0079 19       		.uleb128 0x19
+ 511 007a 03       		.uleb128 0x3
+ 512 007b 0E       		.uleb128 0xe
+ 513 007c 3A       		.uleb128 0x3a
+ 514 007d 0B       		.uleb128 0xb
+ 515 007e 3B       		.uleb128 0x3b
+ 516 007f 0B       		.uleb128 0xb
+ 517 0080 27       		.uleb128 0x27
+ 518 0081 19       		.uleb128 0x19
+ 519 0082 11       		.uleb128 0x11
+ 520 0083 01       		.uleb128 0x1
+ 521 0084 12       		.uleb128 0x12
+ 522 0085 06       		.uleb128 0x6
+ 523 0086 40       		.uleb128 0x40
+ 524 0087 18       		.uleb128 0x18
+ 525 0088 9642     		.uleb128 0x2116
+ 526 008a 19       		.uleb128 0x19
+ 527 008b 00       		.byte	0
+ 528 008c 00       		.byte	0
+ 529 008d 0B       		.uleb128 0xb
+ 530 008e 34       		.uleb128 0x34
+ 531 008f 00       		.byte	0
+ 532 0090 03       		.uleb128 0x3
+ 533 0091 0E       		.uleb128 0xe
+ 534 0092 3A       		.uleb128 0x3a
+ 535 0093 0B       		.uleb128 0xb
+ 536 0094 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 14
+
+
+ 537 0095 0B       		.uleb128 0xb
+ 538 0096 49       		.uleb128 0x49
+ 539 0097 13       		.uleb128 0x13
+ 540 0098 02       		.uleb128 0x2
+ 541 0099 18       		.uleb128 0x18
+ 542 009a 00       		.byte	0
+ 543 009b 00       		.byte	0
+ 544 009c 00       		.byte	0
+ 545              		.section	.debug_aranges,"",%progbits
+ 546 0000 34000000 		.4byte	0x34
+ 547 0004 0200     		.2byte	0x2
+ 548 0006 00000000 		.4byte	.Ldebug_info0
+ 549 000a 04       		.byte	0x4
+ 550 000b 00       		.byte	0
+ 551 000c 0000     		.2byte	0
+ 552 000e 0000     		.2byte	0
+ 553 0010 00000000 		.4byte	.LFB2
+ 554 0014 40000000 		.4byte	.LFE2-.LFB2
+ 555 0018 00000000 		.4byte	.LFB3
+ 556 001c 3C000000 		.4byte	.LFE3-.LFB3
+ 557 0020 00000000 		.4byte	.LFB4
+ 558 0024 34000000 		.4byte	.LFE4-.LFB4
+ 559 0028 00000000 		.4byte	.LFB5
+ 560 002c 1C000000 		.4byte	.LFE5-.LFB5
+ 561 0030 00000000 		.4byte	0
+ 562 0034 00000000 		.4byte	0
+ 563              		.section	.debug_ranges,"",%progbits
+ 564              	.Ldebug_ranges0:
+ 565 0000 00000000 		.4byte	.LFB2
+ 566 0004 40000000 		.4byte	.LFE2
+ 567 0008 00000000 		.4byte	.LFB3
+ 568 000c 3C000000 		.4byte	.LFE3
+ 569 0010 00000000 		.4byte	.LFB4
+ 570 0014 34000000 		.4byte	.LFE4
+ 571 0018 00000000 		.4byte	.LFB5
+ 572 001c 1C000000 		.4byte	.LFE5
+ 573 0020 00000000 		.4byte	0
+ 574 0024 00000000 		.4byte	0
+ 575              		.section	.debug_line,"",%progbits
+ 576              	.Ldebug_line0:
+ 577 0000 B0000000 		.section	.debug_str,"MS",%progbits,1
+ 577      02005200 
+ 577      00000201 
+ 577      FB0E0D00 
+ 577      01010101 
+ 578              	.LASF6:
+ 579 0000 6C6F6E67 		.ascii	"long long int\000"
+ 579      206C6F6E 
+ 579      6720696E 
+ 579      7400
+ 580              	.LASF15:
+ 581 000e 656E6162 		.ascii	"enableState\000"
+ 581      6C655374 
+ 581      61746500 
+ 582              	.LASF8:
+ 583 001a 756E7369 		.ascii	"unsigned int\000"
+ 583      676E6564 
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 15
+
+
+ 583      20696E74 
+ 583      00
+ 584              	.LASF21:
+ 585 0027 5052535F 		.ascii	"PRS_1_RestoreConfig\000"
+ 585      315F5265 
+ 585      73746F72 
+ 585      65436F6E 
+ 585      66696700 
+ 586              	.LASF22:
+ 587 003b 5052535F 		.ascii	"PRS_1_Sleep\000"
+ 587      315F536C 
+ 587      65657000 
+ 588              	.LASF27:
+ 589 0047 5052535F 		.ascii	"PRS_1_backup\000"
+ 589      315F6261 
+ 589      636B7570 
+ 589      00
+ 590              	.LASF12:
+ 591 0054 75696E74 		.ascii	"uint8\000"
+ 591      3800
+ 592              	.LASF5:
+ 593 005a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 593      20756E73 
+ 593      69676E65 
+ 593      6420696E 
+ 593      7400
+ 594              	.LASF7:
+ 595 006c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 595      206C6F6E 
+ 595      6720756E 
+ 595      7369676E 
+ 595      65642069 
+ 596              	.LASF19:
+ 597 0083 5052535F 		.ascii	"PRS_1_BACKUP_STRUCT\000"
+ 597      315F4241 
+ 597      434B5550 
+ 597      5F535452 
+ 597      55435400 
+ 598              	.LASF9:
+ 599 0097 666C6F61 		.ascii	"float\000"
+ 599      7400
+ 600              	.LASF24:
+ 601 009d 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 601      4320342E 
+ 601      382E3420 
+ 601      32303134 
+ 601      30353236 
+ 602 00d0 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 602      20726576 
+ 602      6973696F 
+ 602      6E203231 
+ 602      31333538 
+ 603 0103 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 603      66756E63 
+ 603      74696F6E 
+ 603      2D736563 
+ 603      74696F6E 
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 16
+
+
+ 604              	.LASF25:
+ 605 0119 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PRS_1_PM.c\000"
+ 605      6E657261 
+ 605      7465645F 
+ 605      536F7572 
+ 605      63655C50 
+ 606              	.LASF1:
+ 607 013d 756E7369 		.ascii	"unsigned char\000"
+ 607      676E6564 
+ 607      20636861 
+ 607      7200
+ 608              	.LASF11:
+ 609 014b 63686172 		.ascii	"char\000"
+ 609      00
+ 610              	.LASF17:
+ 611 0150 73656564 		.ascii	"seed_copy\000"
+ 611      5F636F70 
+ 611      7900
+ 612              	.LASF23:
+ 613 015a 5052535F 		.ascii	"PRS_1_Wakeup\000"
+ 613      315F5761 
+ 613      6B657570 
+ 613      00
+ 614              	.LASF4:
+ 615 0167 6C6F6E67 		.ascii	"long int\000"
+ 615      20696E74 
+ 615      00
+ 616              	.LASF16:
+ 617 0170 73656564 		.ascii	"seed\000"
+ 617      00
+ 618              	.LASF10:
+ 619 0175 646F7562 		.ascii	"double\000"
+ 619      6C6500
+ 620              	.LASF26:
+ 621 017c 433A5C55 		.ascii	"C:\\Users\\Manisha Goyal\\Desktop\\lab4\\BLE Lab 4\\"
+ 621      73657273 
+ 621      5C4D616E 
+ 621      69736861 
+ 621      20476F79 
+ 622 01aa 424C4520 		.ascii	"BLE Lab 4.cydsn\000"
+ 622      4C616220 
+ 622      342E6379 
+ 622      64736E00 
+ 623              	.LASF3:
+ 624 01ba 73686F72 		.ascii	"short unsigned int\000"
+ 624      7420756E 
+ 624      7369676E 
+ 624      65642069 
+ 624      6E7400
+ 625              	.LASF0:
+ 626 01cd 7369676E 		.ascii	"signed char\000"
+ 626      65642063 
+ 626      68617200 
+ 627              	.LASF18:
+ 628 01d9 706F6C79 		.ascii	"polynom\000"
+ 628      6E6F6D00 
+ 629              	.LASF20:
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccTmWqWh.s 			page 17
+
+
+ 630 01e1 5052535F 		.ascii	"PRS_1_SaveConfig\000"
+ 630      315F5361 
+ 630      7665436F 
+ 630      6E666967 
+ 630      00
+ 631              	.LASF2:
+ 632 01f2 73686F72 		.ascii	"short int\000"
+ 632      7420696E 
+ 632      7400
+ 633              	.LASF13:
+ 634 01fc 72656738 		.ascii	"reg8\000"
+ 634      00
+ 635              	.LASF14:
+ 636 0201 73697A65 		.ascii	"sizetype\000"
+ 636      74797065 
+ 636      00
+ 637              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

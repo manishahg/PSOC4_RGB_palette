@@ -1,0 +1,1991 @@
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PRS_2.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	PRS_2_initVar
+  18              		.bss
+  19              		.type	PRS_2_initVar, %object
+  20              		.size	PRS_2_initVar, 1
+  21              	PRS_2_initVar:
+  22 0000 00       		.space	1
+  23              		.section	.text.PRS_2_Start,"ax",%progbits
+  24              		.align	2
+  25              		.global	PRS_2_Start
+  26              		.code	16
+  27              		.thumb_func
+  28              		.type	PRS_2_Start, %function
+  29              	PRS_2_Start:
+  30              	.LFB2:
+  31              		.file 1 ".\\Generated_Source\\PSoC4\\PRS_2.c"
+   1:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/PRS_2.c **** * File Name: PRS_2.c
+   3:.\Generated_Source\PSoC4/PRS_2.c **** * Version 2.20
+   4:.\Generated_Source\PSoC4/PRS_2.c **** *
+   5:.\Generated_Source\PSoC4/PRS_2.c **** * Description:
+   6:.\Generated_Source\PSoC4/PRS_2.c **** *  This file provides the source code of the API for the PrISM Component.
+   7:.\Generated_Source\PSoC4/PRS_2.c **** *
+   8:.\Generated_Source\PSoC4/PRS_2.c **** * Note:
+   9:.\Generated_Source\PSoC4/PRS_2.c **** *  The PRiSM Component consists of a 8, 16, 24, 32 - bit PrISM, it
+  10:.\Generated_Source\PSoC4/PRS_2.c **** *  depends on length Polynomial value and user selected Seed Value. 
+  11:.\Generated_Source\PSoC4/PRS_2.c **** *
+  12:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC4/PRS_2.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC4/PRS_2.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:.\Generated_Source\PSoC4/PRS_2.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:.\Generated_Source\PSoC4/PRS_2.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC4/PRS_2.c **** 
+  19:.\Generated_Source\PSoC4/PRS_2.c **** #include "PRS_2.h"
+  20:.\Generated_Source\PSoC4/PRS_2.c **** 
+  21:.\Generated_Source\PSoC4/PRS_2.c **** 
+  22:.\Generated_Source\PSoC4/PRS_2.c **** /***************************************
+  23:.\Generated_Source\PSoC4/PRS_2.c **** * Local data allocation
+  24:.\Generated_Source\PSoC4/PRS_2.c **** ***************************************/
+  25:.\Generated_Source\PSoC4/PRS_2.c **** 
+  26:.\Generated_Source\PSoC4/PRS_2.c **** uint8 PRS_2_initVar = 0u;
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 2
+
+
+  27:.\Generated_Source\PSoC4/PRS_2.c **** 
+  28:.\Generated_Source\PSoC4/PRS_2.c **** 
+  29:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+  30:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_Start
+  31:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+  32:.\Generated_Source\PSoC4/PRS_2.c **** *
+  33:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+  34:.\Generated_Source\PSoC4/PRS_2.c **** *  The start function sets Polynomial, Seed and Pulse Density registers provided
+  35:.\Generated_Source\PSoC4/PRS_2.c **** *  by customizer. PrISM computation starts on rising edge of input clock.
+  36:.\Generated_Source\PSoC4/PRS_2.c **** *
+  37:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:  
+  38:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+  39:.\Generated_Source\PSoC4/PRS_2.c **** *
+  40:.\Generated_Source\PSoC4/PRS_2.c **** * Return:  
+  41:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+  42:.\Generated_Source\PSoC4/PRS_2.c **** *
+  43:.\Generated_Source\PSoC4/PRS_2.c **** * Global variables:
+  44:.\Generated_Source\PSoC4/PRS_2.c **** *  The PRS_2_initVar variable is used to indicate initial
+  45:.\Generated_Source\PSoC4/PRS_2.c **** *  configuration of this component.  The variable is initialized to zero and
+  46:.\Generated_Source\PSoC4/PRS_2.c **** *  set to 1 the first time PRS_2_Start() is called. This allows for
+  47:.\Generated_Source\PSoC4/PRS_2.c **** *  component initialization without re-initialization in all subsequent calls
+  48:.\Generated_Source\PSoC4/PRS_2.c **** *  to the PRS_2_Start() routine. 
+  49:.\Generated_Source\PSoC4/PRS_2.c **** 
+  50:.\Generated_Source\PSoC4/PRS_2.c **** * Reentrant:
+  51:.\Generated_Source\PSoC4/PRS_2.c **** *  No.
+  52:.\Generated_Source\PSoC4/PRS_2.c **** *
+  53:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+  54:.\Generated_Source\PSoC4/PRS_2.c **** void PRS_2_Start(void) 
+  55:.\Generated_Source\PSoC4/PRS_2.c **** {
+  32              		.loc 1 55 0
+  33              		.cfi_startproc
+  34 0000 80B5     		push	{r7, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 00AF     		add	r7, sp, #0
+  39              		.cfi_def_cfa_register 7
+  56:.\Generated_Source\PSoC4/PRS_2.c ****     /* If not Initialized then initialize all required hardware and software */
+  57:.\Generated_Source\PSoC4/PRS_2.c ****     if(PRS_2_initVar == 0u)
+  40              		.loc 1 57 0
+  41 0004 064B     		ldr	r3, .L3
+  42 0006 1B78     		ldrb	r3, [r3]
+  43 0008 002B     		cmp	r3, #0
+  44 000a 04D1     		bne	.L2
+  58:.\Generated_Source\PSoC4/PRS_2.c ****     {
+  59:.\Generated_Source\PSoC4/PRS_2.c ****         PRS_2_Init();
+  45              		.loc 1 59 0
+  46 000c FFF7FEFF 		bl	PRS_2_Init
+  60:.\Generated_Source\PSoC4/PRS_2.c ****         PRS_2_initVar = 1u;
+  47              		.loc 1 60 0
+  48 0010 034B     		ldr	r3, .L3
+  49 0012 0122     		mov	r2, #1
+  50 0014 1A70     		strb	r2, [r3]
+  51              	.L2:
+  61:.\Generated_Source\PSoC4/PRS_2.c ****     }
+  62:.\Generated_Source\PSoC4/PRS_2.c ****     PRS_2_Enable();
+  52              		.loc 1 62 0
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 3
+
+
+  53 0016 FFF7FEFF 		bl	PRS_2_Enable
+  63:.\Generated_Source\PSoC4/PRS_2.c **** }
+  54              		.loc 1 63 0
+  55 001a BD46     		mov	sp, r7
+  56              		@ sp needed
+  57 001c 80BD     		pop	{r7, pc}
+  58              	.L4:
+  59 001e C046     		.align	2
+  60              	.L3:
+  61 0020 00000000 		.word	PRS_2_initVar
+  62              		.cfi_endproc
+  63              	.LFE2:
+  64              		.size	PRS_2_Start, .-PRS_2_Start
+  65              		.section	.text.PRS_2_Init,"ax",%progbits
+  66              		.align	2
+  67              		.global	PRS_2_Init
+  68              		.code	16
+  69              		.thumb_func
+  70              		.type	PRS_2_Init, %function
+  71              	PRS_2_Init:
+  72              	.LFB3:
+  64:.\Generated_Source\PSoC4/PRS_2.c **** 
+  65:.\Generated_Source\PSoC4/PRS_2.c **** 
+  66:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+  67:.\Generated_Source\PSoC4/PRS_2.c **** * Function Name: PRS_2_Init
+  68:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+  69:.\Generated_Source\PSoC4/PRS_2.c **** *
+  70:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+  71:.\Generated_Source\PSoC4/PRS_2.c **** *  Initialize component's parameters to the parameters set by user in the 
+  72:.\Generated_Source\PSoC4/PRS_2.c **** *  customizer of the component placed onto schematic. Usually called in 
+  73:.\Generated_Source\PSoC4/PRS_2.c **** *  PRS_2_Start().
+  74:.\Generated_Source\PSoC4/PRS_2.c **** *
+  75:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:  
+  76:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+  77:.\Generated_Source\PSoC4/PRS_2.c **** *
+  78:.\Generated_Source\PSoC4/PRS_2.c **** * Return: 
+  79:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+  80:.\Generated_Source\PSoC4/PRS_2.c **** *
+  81:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+  82:.\Generated_Source\PSoC4/PRS_2.c **** void PRS_2_Init(void) 
+  83:.\Generated_Source\PSoC4/PRS_2.c **** {
+  73              		.loc 1 83 0
+  74              		.cfi_startproc
+  75 0000 90B5     		push	{r4, r7, lr}
+  76              		.cfi_def_cfa_offset 12
+  77              		.cfi_offset 4, -12
+  78              		.cfi_offset 7, -8
+  79              		.cfi_offset 14, -4
+  80 0002 83B0     		sub	sp, sp, #12
+  81              		.cfi_def_cfa_offset 24
+  82 0004 00AF     		add	r7, sp, #0
+  83              		.cfi_def_cfa_register 7
+  84:.\Generated_Source\PSoC4/PRS_2.c ****     uint8 enableInterrupts;
+  85:.\Generated_Source\PSoC4/PRS_2.c ****     
+  86:.\Generated_Source\PSoC4/PRS_2.c ****     /* Writes Seed value, polynom value and density provided by customizer */
+  87:.\Generated_Source\PSoC4/PRS_2.c ****     PRS_2_WriteSeed(PRS_2_SEED);
+  84              		.loc 1 87 0
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 4
+
+
+  85 0006 FF20     		mov	r0, #255
+  86 0008 FFF7FEFF 		bl	PRS_2_WriteSeed
+  88:.\Generated_Source\PSoC4/PRS_2.c ****     PRS_2_WritePolynomial(PRS_2_POLYNOM);
+  87              		.loc 1 88 0
+  88 000c B820     		mov	r0, #184
+  89 000e FFF7FEFF 		bl	PRS_2_WritePolynomial
+  89:.\Generated_Source\PSoC4/PRS_2.c ****     PRS_2_WritePulse0(PRS_2_DENSITY0);
+  90              		.loc 1 89 0
+  91 0012 0120     		mov	r0, #1
+  92 0014 FFF7FEFF 		bl	PRS_2_WritePulse0
+  90:.\Generated_Source\PSoC4/PRS_2.c ****     PRS_2_WritePulse1(PRS_2_DENSITY1);
+  93              		.loc 1 90 0
+  94 0018 0120     		mov	r0, #1
+  95 001a FFF7FEFF 		bl	PRS_2_WritePulse1
+  91:.\Generated_Source\PSoC4/PRS_2.c ****     
+  92:.\Generated_Source\PSoC4/PRS_2.c ****     enableInterrupts = CyEnterCriticalSection();
+  96              		.loc 1 92 0
+  97 001e FC1D     		add	r4, r7, #7
+  98 0020 FFF7FEFF 		bl	CyEnterCriticalSection
+  99 0024 031C     		mov	r3, r0
+ 100 0026 2370     		strb	r3, [r4]
+  93:.\Generated_Source\PSoC4/PRS_2.c ****     /* Set FIFO0_CLR bit to use FIFO0 as a simple one-byte buffer*/
+  94:.\Generated_Source\PSoC4/PRS_2.c ****     CY_SET_REG8(PRS_2_AUX_CONTROL_PTR, 
+ 101              		.loc 1 94 0
+ 102 0028 0F4B     		ldr	r3, .L6
+ 103 002a 0F4A     		ldr	r2, .L6
+ 104 002c 1278     		ldrb	r2, [r2]
+ 105 002e D2B2     		uxtb	r2, r2
+ 106 0030 0121     		mov	r1, #1
+ 107 0032 0A43     		orr	r2, r1
+ 108 0034 D2B2     		uxtb	r2, r2
+ 109 0036 1A70     		strb	r2, [r3]
+  95:.\Generated_Source\PSoC4/PRS_2.c ****                         CY_GET_REG8(PRS_2_AUX_CONTROL_PTR) | PRS_2_FIFO0_CLR);
+  96:.\Generated_Source\PSoC4/PRS_2.c ****     CyExitCriticalSection(enableInterrupts);
+ 110              		.loc 1 96 0
+ 111 0038 FB1D     		add	r3, r7, #7
+ 112 003a 1B78     		ldrb	r3, [r3]
+ 113 003c 181C     		mov	r0, r3
+ 114 003e FFF7FEFF 		bl	CyExitCriticalSection
+  97:.\Generated_Source\PSoC4/PRS_2.c ****     
+  98:.\Generated_Source\PSoC4/PRS_2.c ****     #if(!PRS_2_PULSE_TYPE_HARDCODED)
+  99:.\Generated_Source\PSoC4/PRS_2.c ****         /* Writes density type provided by customizer */
+ 100:.\Generated_Source\PSoC4/PRS_2.c ****         #if(PRS_2_GREATERTHAN_OR_EQUAL == PRS_2_COMPARE0)
+ 101:.\Generated_Source\PSoC4/PRS_2.c ****             PRS_2_CONTROL_REG |= PRS_2_CTRL_COMPARE_TYPE0_GREATER_THAN_OR_EQUAL;
+ 102:.\Generated_Source\PSoC4/PRS_2.c ****         #else
+ 103:.\Generated_Source\PSoC4/PRS_2.c ****             PRS_2_CONTROL_REG &= (uint8)~PRS_2_CTRL_COMPARE_TYPE0_GREATER_THAN_OR_EQUAL;
+ 115              		.loc 1 103 0
+ 116 0042 0A4B     		ldr	r3, .L6+4
+ 117 0044 094A     		ldr	r2, .L6+4
+ 118 0046 1278     		ldrb	r2, [r2]
+ 119 0048 D2B2     		uxtb	r2, r2
+ 120 004a 0221     		mov	r1, #2
+ 121 004c 8A43     		bic	r2, r1
+ 122 004e D2B2     		uxtb	r2, r2
+ 123 0050 1A70     		strb	r2, [r3]
+ 104:.\Generated_Source\PSoC4/PRS_2.c ****         #endif /* End PRS_2_COMPARE0 */    
+ 105:.\Generated_Source\PSoC4/PRS_2.c ****     
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 5
+
+
+ 106:.\Generated_Source\PSoC4/PRS_2.c ****         #if(PRS_2_GREATERTHAN_OR_EQUAL == PRS_2_COMPARE1)
+ 107:.\Generated_Source\PSoC4/PRS_2.c ****             PRS_2_CONTROL_REG |= PRS_2_CTRL_COMPARE_TYPE1_GREATER_THAN_OR_EQUAL;
+ 108:.\Generated_Source\PSoC4/PRS_2.c ****         #else
+ 109:.\Generated_Source\PSoC4/PRS_2.c ****             PRS_2_CONTROL_REG &= (uint8)~PRS_2_CTRL_COMPARE_TYPE1_GREATER_THAN_OR_EQUAL;
+ 124              		.loc 1 109 0
+ 125 0052 064B     		ldr	r3, .L6+4
+ 126 0054 054A     		ldr	r2, .L6+4
+ 127 0056 1278     		ldrb	r2, [r2]
+ 128 0058 D2B2     		uxtb	r2, r2
+ 129 005a 0421     		mov	r1, #4
+ 130 005c 8A43     		bic	r2, r1
+ 131 005e D2B2     		uxtb	r2, r2
+ 132 0060 1A70     		strb	r2, [r3]
+ 110:.\Generated_Source\PSoC4/PRS_2.c ****         #endif /* End PRS_2_COMPARE1 */    
+ 111:.\Generated_Source\PSoC4/PRS_2.c ****     #endif /* End PRS_2_PULSE_TYPE_HARDCODED */
+ 112:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 133              		.loc 1 112 0
+ 134 0062 BD46     		mov	sp, r7
+ 135 0064 03B0     		add	sp, sp, #12
+ 136              		@ sp needed
+ 137 0066 90BD     		pop	{r4, r7, pc}
+ 138              	.L7:
+ 139              		.align	2
+ 140              	.L6:
+ 141 0068 93000F40 		.word	1074725011
+ 142 006c 73000F40 		.word	1074724979
+ 143              		.cfi_endproc
+ 144              	.LFE3:
+ 145              		.size	PRS_2_Init, .-PRS_2_Init
+ 146              		.section	.text.PRS_2_Enable,"ax",%progbits
+ 147              		.align	2
+ 148              		.global	PRS_2_Enable
+ 149              		.code	16
+ 150              		.thumb_func
+ 151              		.type	PRS_2_Enable, %function
+ 152              	PRS_2_Enable:
+ 153              	.LFB4:
+ 113:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 114:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 115:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ 116:.\Generated_Source\PSoC4/PRS_2.c **** * Function Name: PRS_2_Enable
+ 117:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 118:.\Generated_Source\PSoC4/PRS_2.c **** *  
+ 119:.\Generated_Source\PSoC4/PRS_2.c **** * Summary: 
+ 120:.\Generated_Source\PSoC4/PRS_2.c **** *  Enables the PrISM block operation
+ 121:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 122:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:  
+ 123:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 124:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 125:.\Generated_Source\PSoC4/PRS_2.c **** * Return: 
+ 126:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 127:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 128:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 129:.\Generated_Source\PSoC4/PRS_2.c **** void PRS_2_Enable(void) 
+ 130:.\Generated_Source\PSoC4/PRS_2.c **** {
+ 154              		.loc 1 130 0
+ 155              		.cfi_startproc
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 6
+
+
+ 156 0000 80B5     		push	{r7, lr}
+ 157              		.cfi_def_cfa_offset 8
+ 158              		.cfi_offset 7, -8
+ 159              		.cfi_offset 14, -4
+ 160 0002 00AF     		add	r7, sp, #0
+ 161              		.cfi_def_cfa_register 7
+ 131:.\Generated_Source\PSoC4/PRS_2.c ****     #if(!PRS_2_PULSE_TYPE_HARDCODED)
+ 132:.\Generated_Source\PSoC4/PRS_2.c ****         /* Enable the PrISM computation */
+ 133:.\Generated_Source\PSoC4/PRS_2.c ****         PRS_2_CONTROL_REG |= PRS_2_CTRL_ENABLE;
+ 162              		.loc 1 133 0
+ 163 0004 044B     		ldr	r3, .L9
+ 164 0006 044A     		ldr	r2, .L9
+ 165 0008 1278     		ldrb	r2, [r2]
+ 166 000a D2B2     		uxtb	r2, r2
+ 167 000c 0121     		mov	r1, #1
+ 168 000e 0A43     		orr	r2, r1
+ 169 0010 D2B2     		uxtb	r2, r2
+ 170 0012 1A70     		strb	r2, [r3]
+ 134:.\Generated_Source\PSoC4/PRS_2.c ****     #endif /* End PRS_2_PULSE_TYPE_HARDCODED */
+ 135:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 171              		.loc 1 135 0
+ 172 0014 BD46     		mov	sp, r7
+ 173              		@ sp needed
+ 174 0016 80BD     		pop	{r7, pc}
+ 175              	.L10:
+ 176              		.align	2
+ 177              	.L9:
+ 178 0018 73000F40 		.word	1074724979
+ 179              		.cfi_endproc
+ 180              	.LFE4:
+ 181              		.size	PRS_2_Enable, .-PRS_2_Enable
+ 182              		.section	.text.PRS_2_Stop,"ax",%progbits
+ 183              		.align	2
+ 184              		.global	PRS_2_Stop
+ 185              		.code	16
+ 186              		.thumb_func
+ 187              		.type	PRS_2_Stop, %function
+ 188              	PRS_2_Stop:
+ 189              	.LFB5:
+ 136:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 137:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 138:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ 139:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_Stop
+ 140:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 141:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 142:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+ 143:.\Generated_Source\PSoC4/PRS_2.c **** *  Stops PrISM computation. Outputs remain constant.
+ 144:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 145:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:  
+ 146:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 147:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 148:.\Generated_Source\PSoC4/PRS_2.c **** * Return: 
+ 149:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 150:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 151:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 152:.\Generated_Source\PSoC4/PRS_2.c **** void PRS_2_Stop(void) 
+ 153:.\Generated_Source\PSoC4/PRS_2.c **** {
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 7
+
+
+ 190              		.loc 1 153 0
+ 191              		.cfi_startproc
+ 192 0000 80B5     		push	{r7, lr}
+ 193              		.cfi_def_cfa_offset 8
+ 194              		.cfi_offset 7, -8
+ 195              		.cfi_offset 14, -4
+ 196 0002 00AF     		add	r7, sp, #0
+ 197              		.cfi_def_cfa_register 7
+ 154:.\Generated_Source\PSoC4/PRS_2.c ****     #if(!PRS_2_PULSE_TYPE_HARDCODED)
+ 155:.\Generated_Source\PSoC4/PRS_2.c ****         PRS_2_CONTROL_REG &= (uint8)~PRS_2_CTRL_ENABLE;
+ 198              		.loc 1 155 0
+ 199 0004 044B     		ldr	r3, .L12
+ 200 0006 044A     		ldr	r2, .L12
+ 201 0008 1278     		ldrb	r2, [r2]
+ 202 000a D2B2     		uxtb	r2, r2
+ 203 000c 0121     		mov	r1, #1
+ 204 000e 8A43     		bic	r2, r1
+ 205 0010 D2B2     		uxtb	r2, r2
+ 206 0012 1A70     		strb	r2, [r3]
+ 156:.\Generated_Source\PSoC4/PRS_2.c ****     #else
+ 157:.\Generated_Source\PSoC4/PRS_2.c ****         /* PulseTypeHardoded option enabled - to stop PrISM use enable input */
+ 158:.\Generated_Source\PSoC4/PRS_2.c ****     #endif /* End $INSTANCE_NAME`_PULSE_TYPE_HARDCODED */
+ 159:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 207              		.loc 1 159 0
+ 208 0014 BD46     		mov	sp, r7
+ 209              		@ sp needed
+ 210 0016 80BD     		pop	{r7, pc}
+ 211              	.L13:
+ 212              		.align	2
+ 213              	.L12:
+ 214 0018 73000F40 		.word	1074724979
+ 215              		.cfi_endproc
+ 216              	.LFE5:
+ 217              		.size	PRS_2_Stop, .-PRS_2_Stop
+ 218              		.section	.text.PRS_2_SetPulse0Mode,"ax",%progbits
+ 219              		.align	2
+ 220              		.global	PRS_2_SetPulse0Mode
+ 221              		.code	16
+ 222              		.thumb_func
+ 223              		.type	PRS_2_SetPulse0Mode, %function
+ 224              	PRS_2_SetPulse0Mode:
+ 225              	.LFB6:
+ 160:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 161:.\Generated_Source\PSoC4/PRS_2.c **** #if(!PRS_2_PULSE_TYPE_HARDCODED)
+ 162:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 163:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 164:.\Generated_Source\PSoC4/PRS_2.c ****     /***************************************************************************
+ 165:.\Generated_Source\PSoC4/PRS_2.c ****     * FUNCTION NAME:     PRS_2_SetPulse0Mode
+ 166:.\Generated_Source\PSoC4/PRS_2.c ****     ****************************************************************************
+ 167:.\Generated_Source\PSoC4/PRS_2.c ****     *
+ 168:.\Generated_Source\PSoC4/PRS_2.c ****     * Summary:
+ 169:.\Generated_Source\PSoC4/PRS_2.c ****     *  Sets the pulse density type for Density0. Less than or Equal(<=) or 
+ 170:.\Generated_Source\PSoC4/PRS_2.c ****     *  Greater than or Equal(>=).
+ 171:.\Generated_Source\PSoC4/PRS_2.c ****     *
+ 172:.\Generated_Source\PSoC4/PRS_2.c ****     * Parameters:
+ 173:.\Generated_Source\PSoC4/PRS_2.c ****     *  pulse0Type: Selected pulse density type.
+ 174:.\Generated_Source\PSoC4/PRS_2.c ****     *
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 8
+
+
+ 175:.\Generated_Source\PSoC4/PRS_2.c ****     * Return:
+ 176:.\Generated_Source\PSoC4/PRS_2.c ****     *  None.
+ 177:.\Generated_Source\PSoC4/PRS_2.c ****     *
+ 178:.\Generated_Source\PSoC4/PRS_2.c ****     ***************************************************************************/
+ 179:.\Generated_Source\PSoC4/PRS_2.c ****     void PRS_2_SetPulse0Mode(uint8 pulse0Type) 
+ 180:.\Generated_Source\PSoC4/PRS_2.c ****     {
+ 226              		.loc 1 180 0
+ 227              		.cfi_startproc
+ 228 0000 80B5     		push	{r7, lr}
+ 229              		.cfi_def_cfa_offset 8
+ 230              		.cfi_offset 7, -8
+ 231              		.cfi_offset 14, -4
+ 232 0002 82B0     		sub	sp, sp, #8
+ 233              		.cfi_def_cfa_offset 16
+ 234 0004 00AF     		add	r7, sp, #0
+ 235              		.cfi_def_cfa_register 7
+ 236 0006 021C     		mov	r2, r0
+ 237 0008 FB1D     		add	r3, r7, #7
+ 238 000a 1A70     		strb	r2, [r3]
+ 181:.\Generated_Source\PSoC4/PRS_2.c ****         if(pulse0Type == PRS_2_GREATERTHAN_OR_EQUAL)
+ 239              		.loc 1 181 0
+ 240 000c FB1D     		add	r3, r7, #7
+ 241 000e 1B78     		ldrb	r3, [r3]
+ 242 0010 012B     		cmp	r3, #1
+ 243 0012 08D1     		bne	.L15
+ 182:.\Generated_Source\PSoC4/PRS_2.c ****         {
+ 183:.\Generated_Source\PSoC4/PRS_2.c ****             PRS_2_CONTROL_REG |= PRS_2_CTRL_COMPARE_TYPE0_GREATER_THAN_OR_EQUAL;
+ 244              		.loc 1 183 0
+ 245 0014 094B     		ldr	r3, .L17
+ 246 0016 094A     		ldr	r2, .L17
+ 247 0018 1278     		ldrb	r2, [r2]
+ 248 001a D2B2     		uxtb	r2, r2
+ 249 001c 0221     		mov	r1, #2
+ 250 001e 0A43     		orr	r2, r1
+ 251 0020 D2B2     		uxtb	r2, r2
+ 252 0022 1A70     		strb	r2, [r3]
+ 253 0024 07E0     		b	.L14
+ 254              	.L15:
+ 184:.\Generated_Source\PSoC4/PRS_2.c ****         }
+ 185:.\Generated_Source\PSoC4/PRS_2.c ****         else
+ 186:.\Generated_Source\PSoC4/PRS_2.c ****         {
+ 187:.\Generated_Source\PSoC4/PRS_2.c ****             PRS_2_CONTROL_REG &= (uint8)~PRS_2_CTRL_COMPARE_TYPE0_GREATER_THAN_OR_EQUAL;
+ 255              		.loc 1 187 0
+ 256 0026 054B     		ldr	r3, .L17
+ 257 0028 044A     		ldr	r2, .L17
+ 258 002a 1278     		ldrb	r2, [r2]
+ 259 002c D2B2     		uxtb	r2, r2
+ 260 002e 0221     		mov	r1, #2
+ 261 0030 8A43     		bic	r2, r1
+ 262 0032 D2B2     		uxtb	r2, r2
+ 263 0034 1A70     		strb	r2, [r3]
+ 264              	.L14:
+ 188:.\Generated_Source\PSoC4/PRS_2.c ****         }
+ 189:.\Generated_Source\PSoC4/PRS_2.c ****     }
+ 265              		.loc 1 189 0
+ 266 0036 BD46     		mov	sp, r7
+ 267 0038 02B0     		add	sp, sp, #8
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 9
+
+
+ 268              		@ sp needed
+ 269 003a 80BD     		pop	{r7, pc}
+ 270              	.L18:
+ 271              		.align	2
+ 272              	.L17:
+ 273 003c 73000F40 		.word	1074724979
+ 274              		.cfi_endproc
+ 275              	.LFE6:
+ 276              		.size	PRS_2_SetPulse0Mode, .-PRS_2_SetPulse0Mode
+ 277              		.section	.text.PRS_2_SetPulse1Mode,"ax",%progbits
+ 278              		.align	2
+ 279              		.global	PRS_2_SetPulse1Mode
+ 280              		.code	16
+ 281              		.thumb_func
+ 282              		.type	PRS_2_SetPulse1Mode, %function
+ 283              	PRS_2_SetPulse1Mode:
+ 284              	.LFB7:
+ 190:.\Generated_Source\PSoC4/PRS_2.c ****     
+ 191:.\Generated_Source\PSoC4/PRS_2.c ****     
+ 192:.\Generated_Source\PSoC4/PRS_2.c ****     /***************************************************************************
+ 193:.\Generated_Source\PSoC4/PRS_2.c ****     * FUNCTION NAME:   PRS_2_SetPulse1Mode
+ 194:.\Generated_Source\PSoC4/PRS_2.c ****     ****************************************************************************
+ 195:.\Generated_Source\PSoC4/PRS_2.c ****     *
+ 196:.\Generated_Source\PSoC4/PRS_2.c ****     * Summary:
+ 197:.\Generated_Source\PSoC4/PRS_2.c ****     *  Sets the pulse density type for Density1. Less than or Equal(<=) or 
+ 198:.\Generated_Source\PSoC4/PRS_2.c ****     *  Greater than or Equal(>=).
+ 199:.\Generated_Source\PSoC4/PRS_2.c ****     *
+ 200:.\Generated_Source\PSoC4/PRS_2.c ****     * Parameters:  
+ 201:.\Generated_Source\PSoC4/PRS_2.c ****     *  pulse1Type: Selected pulse density type.
+ 202:.\Generated_Source\PSoC4/PRS_2.c ****     *
+ 203:.\Generated_Source\PSoC4/PRS_2.c ****     * Return:
+ 204:.\Generated_Source\PSoC4/PRS_2.c ****     *  None.
+ 205:.\Generated_Source\PSoC4/PRS_2.c ****     *
+ 206:.\Generated_Source\PSoC4/PRS_2.c ****     ***************************************************************************/
+ 207:.\Generated_Source\PSoC4/PRS_2.c ****     void PRS_2_SetPulse1Mode(uint8 pulse1Type) 
+ 208:.\Generated_Source\PSoC4/PRS_2.c ****     {
+ 285              		.loc 1 208 0
+ 286              		.cfi_startproc
+ 287 0000 80B5     		push	{r7, lr}
+ 288              		.cfi_def_cfa_offset 8
+ 289              		.cfi_offset 7, -8
+ 290              		.cfi_offset 14, -4
+ 291 0002 82B0     		sub	sp, sp, #8
+ 292              		.cfi_def_cfa_offset 16
+ 293 0004 00AF     		add	r7, sp, #0
+ 294              		.cfi_def_cfa_register 7
+ 295 0006 021C     		mov	r2, r0
+ 296 0008 FB1D     		add	r3, r7, #7
+ 297 000a 1A70     		strb	r2, [r3]
+ 209:.\Generated_Source\PSoC4/PRS_2.c ****         if(pulse1Type == PRS_2_GREATERTHAN_OR_EQUAL)
+ 298              		.loc 1 209 0
+ 299 000c FB1D     		add	r3, r7, #7
+ 300 000e 1B78     		ldrb	r3, [r3]
+ 301 0010 012B     		cmp	r3, #1
+ 302 0012 08D1     		bne	.L20
+ 210:.\Generated_Source\PSoC4/PRS_2.c ****         {
+ 211:.\Generated_Source\PSoC4/PRS_2.c ****             PRS_2_CONTROL_REG |= PRS_2_CTRL_COMPARE_TYPE1_GREATER_THAN_OR_EQUAL;
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 10
+
+
+ 303              		.loc 1 211 0
+ 304 0014 094B     		ldr	r3, .L22
+ 305 0016 094A     		ldr	r2, .L22
+ 306 0018 1278     		ldrb	r2, [r2]
+ 307 001a D2B2     		uxtb	r2, r2
+ 308 001c 0421     		mov	r1, #4
+ 309 001e 0A43     		orr	r2, r1
+ 310 0020 D2B2     		uxtb	r2, r2
+ 311 0022 1A70     		strb	r2, [r3]
+ 312 0024 07E0     		b	.L19
+ 313              	.L20:
+ 212:.\Generated_Source\PSoC4/PRS_2.c ****         }
+ 213:.\Generated_Source\PSoC4/PRS_2.c ****         else
+ 214:.\Generated_Source\PSoC4/PRS_2.c ****         {
+ 215:.\Generated_Source\PSoC4/PRS_2.c ****             PRS_2_CONTROL_REG &= (uint8)~PRS_2_CTRL_COMPARE_TYPE1_GREATER_THAN_OR_EQUAL;
+ 314              		.loc 1 215 0
+ 315 0026 054B     		ldr	r3, .L22
+ 316 0028 044A     		ldr	r2, .L22
+ 317 002a 1278     		ldrb	r2, [r2]
+ 318 002c D2B2     		uxtb	r2, r2
+ 319 002e 0421     		mov	r1, #4
+ 320 0030 8A43     		bic	r2, r1
+ 321 0032 D2B2     		uxtb	r2, r2
+ 322 0034 1A70     		strb	r2, [r3]
+ 323              	.L19:
+ 216:.\Generated_Source\PSoC4/PRS_2.c ****         }
+ 217:.\Generated_Source\PSoC4/PRS_2.c ****     }
+ 324              		.loc 1 217 0
+ 325 0036 BD46     		mov	sp, r7
+ 326 0038 02B0     		add	sp, sp, #8
+ 327              		@ sp needed
+ 328 003a 80BD     		pop	{r7, pc}
+ 329              	.L23:
+ 330              		.align	2
+ 331              	.L22:
+ 332 003c 73000F40 		.word	1074724979
+ 333              		.cfi_endproc
+ 334              	.LFE7:
+ 335              		.size	PRS_2_SetPulse1Mode, .-PRS_2_SetPulse1Mode
+ 336              		.section	.text.PRS_2_ReadSeed,"ax",%progbits
+ 337              		.align	2
+ 338              		.global	PRS_2_ReadSeed
+ 339              		.code	16
+ 340              		.thumb_func
+ 341              		.type	PRS_2_ReadSeed, %function
+ 342              	PRS_2_ReadSeed:
+ 343              	.LFB8:
+ 218:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 219:.\Generated_Source\PSoC4/PRS_2.c **** #endif /* End PRS_2_PULSE_TYPE_HARDCODED == 0 */
+ 220:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 221:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 222:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ 223:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_ReadSeed
+ 224:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 225:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 226:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+ 227:.\Generated_Source\PSoC4/PRS_2.c **** *  Reads the PrISM Seed register.
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 11
+
+
+ 228:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 229:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:
+ 230:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 231:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 232:.\Generated_Source\PSoC4/PRS_2.c **** * Return:
+ 233:.\Generated_Source\PSoC4/PRS_2.c **** *  Current Period register value.
+ 234:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 235:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 236:.\Generated_Source\PSoC4/PRS_2.c **** uint8 PRS_2_ReadSeed(void) 
+ 237:.\Generated_Source\PSoC4/PRS_2.c **** {
+ 344              		.loc 1 237 0
+ 345              		.cfi_startproc
+ 346 0000 80B5     		push	{r7, lr}
+ 347              		.cfi_def_cfa_offset 8
+ 348              		.cfi_offset 7, -8
+ 349              		.cfi_offset 14, -4
+ 350 0002 00AF     		add	r7, sp, #0
+ 351              		.cfi_def_cfa_register 7
+ 238:.\Generated_Source\PSoC4/PRS_2.c ****     return( CY_GET_REG8(PRS_2_SEED_PTR) );
+ 352              		.loc 1 238 0
+ 353 0004 024B     		ldr	r3, .L26
+ 354 0006 1B78     		ldrb	r3, [r3]
+ 355 0008 DBB2     		uxtb	r3, r3
+ 239:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 356              		.loc 1 239 0
+ 357 000a 181C     		mov	r0, r3
+ 358 000c BD46     		mov	sp, r7
+ 359              		@ sp needed
+ 360 000e 80BD     		pop	{r7, pc}
+ 361              	.L27:
+ 362              		.align	2
+ 363              	.L26:
+ 364 0010 03000F40 		.word	1074724867
+ 365              		.cfi_endproc
+ 366              	.LFE8:
+ 367              		.size	PRS_2_ReadSeed, .-PRS_2_ReadSeed
+ 368              		.section	.text.PRS_2_WriteSeed,"ax",%progbits
+ 369              		.align	2
+ 370              		.global	PRS_2_WriteSeed
+ 371              		.code	16
+ 372              		.thumb_func
+ 373              		.type	PRS_2_WriteSeed, %function
+ 374              	PRS_2_WriteSeed:
+ 375              	.LFB9:
+ 240:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 241:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 242:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ 243:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_WriteSeed
+ 244:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 245:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 246:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+ 247:.\Generated_Source\PSoC4/PRS_2.c **** *  Writes the PrISM Seed register with the start value.
+ 248:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 249:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:
+ 250:.\Generated_Source\PSoC4/PRS_2.c **** *  seed: Seed register value.
+ 251:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 252:.\Generated_Source\PSoC4/PRS_2.c **** * Return:
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 12
+
+
+ 253:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 254:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 255:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 256:.\Generated_Source\PSoC4/PRS_2.c **** void PRS_2_WriteSeed(uint8 seed) 
+ 257:.\Generated_Source\PSoC4/PRS_2.c **** {
+ 376              		.loc 1 257 0
+ 377              		.cfi_startproc
+ 378 0000 80B5     		push	{r7, lr}
+ 379              		.cfi_def_cfa_offset 8
+ 380              		.cfi_offset 7, -8
+ 381              		.cfi_offset 14, -4
+ 382 0002 82B0     		sub	sp, sp, #8
+ 383              		.cfi_def_cfa_offset 16
+ 384 0004 00AF     		add	r7, sp, #0
+ 385              		.cfi_def_cfa_register 7
+ 386 0006 021C     		mov	r2, r0
+ 387 0008 FB1D     		add	r3, r7, #7
+ 388 000a 1A70     		strb	r2, [r3]
+ 258:.\Generated_Source\PSoC4/PRS_2.c ****     if(seed != 0u)
+ 389              		.loc 1 258 0
+ 390 000c FB1D     		add	r3, r7, #7
+ 391 000e 1B78     		ldrb	r3, [r3]
+ 392 0010 002B     		cmp	r3, #0
+ 393 0012 07D0     		beq	.L28
+ 259:.\Generated_Source\PSoC4/PRS_2.c ****     {
+ 260:.\Generated_Source\PSoC4/PRS_2.c ****         CY_SET_REG8(PRS_2_SEED_COPY_PTR, seed);
+ 394              		.loc 1 260 0
+ 395 0014 054B     		ldr	r3, .L30
+ 396 0016 FA1D     		add	r2, r7, #7
+ 397 0018 1278     		ldrb	r2, [r2]
+ 398 001a 1A70     		strb	r2, [r3]
+ 261:.\Generated_Source\PSoC4/PRS_2.c ****         CY_SET_REG8(PRS_2_SEED_PTR, seed);
+ 399              		.loc 1 261 0
+ 400 001c 044B     		ldr	r3, .L30+4
+ 401 001e FA1D     		add	r2, r7, #7
+ 402 0020 1278     		ldrb	r2, [r2]
+ 403 0022 1A70     		strb	r2, [r3]
+ 404              	.L28:
+ 262:.\Generated_Source\PSoC4/PRS_2.c ****     }
+ 263:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 405              		.loc 1 263 0
+ 406 0024 BD46     		mov	sp, r7
+ 407 0026 02B0     		add	sp, sp, #8
+ 408              		@ sp needed
+ 409 0028 80BD     		pop	{r7, pc}
+ 410              	.L31:
+ 411 002a C046     		.align	2
+ 412              	.L30:
+ 413 002c 43000F40 		.word	1074724931
+ 414 0030 03000F40 		.word	1074724867
+ 415              		.cfi_endproc
+ 416              	.LFE9:
+ 417              		.size	PRS_2_WriteSeed, .-PRS_2_WriteSeed
+ 418              		.section	.text.PRS_2_ReadPolynomial,"ax",%progbits
+ 419              		.align	2
+ 420              		.global	PRS_2_ReadPolynomial
+ 421              		.code	16
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 13
+
+
+ 422              		.thumb_func
+ 423              		.type	PRS_2_ReadPolynomial, %function
+ 424              	PRS_2_ReadPolynomial:
+ 425              	.LFB10:
+ 264:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 265:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 266:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ 267:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_ReadPolynomial
+ 268:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 269:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 270:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+ 271:.\Generated_Source\PSoC4/PRS_2.c **** *  Reads the PrISM polynomial.
+ 272:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 273:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:
+ 274:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 275:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 276:.\Generated_Source\PSoC4/PRS_2.c **** * Return:
+ 277:.\Generated_Source\PSoC4/PRS_2.c **** *  PrISM polynomial.
+ 278:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 279:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 280:.\Generated_Source\PSoC4/PRS_2.c **** uint8 PRS_2_ReadPolynomial(void) 
+ 281:.\Generated_Source\PSoC4/PRS_2.c **** {
+ 426              		.loc 1 281 0
+ 427              		.cfi_startproc
+ 428 0000 80B5     		push	{r7, lr}
+ 429              		.cfi_def_cfa_offset 8
+ 430              		.cfi_offset 7, -8
+ 431              		.cfi_offset 14, -4
+ 432 0002 00AF     		add	r7, sp, #0
+ 433              		.cfi_def_cfa_register 7
+ 282:.\Generated_Source\PSoC4/PRS_2.c ****     return( CY_GET_REG8(PRS_2_POLYNOM_PTR) );
+ 434              		.loc 1 282 0
+ 435 0004 024B     		ldr	r3, .L34
+ 436 0006 1B78     		ldrb	r3, [r3]
+ 437 0008 DBB2     		uxtb	r3, r3
+ 283:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 438              		.loc 1 283 0
+ 439 000a 181C     		mov	r0, r3
+ 440 000c BD46     		mov	sp, r7
+ 441              		@ sp needed
+ 442 000e 80BD     		pop	{r7, pc}
+ 443              	.L35:
+ 444              		.align	2
+ 445              	.L34:
+ 446 0010 13000F40 		.word	1074724883
+ 447              		.cfi_endproc
+ 448              	.LFE10:
+ 449              		.size	PRS_2_ReadPolynomial, .-PRS_2_ReadPolynomial
+ 450              		.section	.text.PRS_2_WritePolynomial,"ax",%progbits
+ 451              		.align	2
+ 452              		.global	PRS_2_WritePolynomial
+ 453              		.code	16
+ 454              		.thumb_func
+ 455              		.type	PRS_2_WritePolynomial, %function
+ 456              	PRS_2_WritePolynomial:
+ 457              	.LFB11:
+ 284:.\Generated_Source\PSoC4/PRS_2.c **** 
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 14
+
+
+ 285:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 286:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ 287:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_WritePolynomial
+ 288:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 289:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 290:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+ 291:.\Generated_Source\PSoC4/PRS_2.c **** *  Writes the PrISM polynomial.
+ 292:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 293:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:
+ 294:.\Generated_Source\PSoC4/PRS_2.c **** *  polynomial: PrISM polynomial.
+ 295:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 296:.\Generated_Source\PSoC4/PRS_2.c **** * Return:
+ 297:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 298:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 299:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 300:.\Generated_Source\PSoC4/PRS_2.c **** void PRS_2_WritePolynomial(uint8 polynomial) \
+ 301:.\Generated_Source\PSoC4/PRS_2.c ****                                                                 
+ 302:.\Generated_Source\PSoC4/PRS_2.c **** {
+ 458              		.loc 1 302 0
+ 459              		.cfi_startproc
+ 460 0000 80B5     		push	{r7, lr}
+ 461              		.cfi_def_cfa_offset 8
+ 462              		.cfi_offset 7, -8
+ 463              		.cfi_offset 14, -4
+ 464 0002 82B0     		sub	sp, sp, #8
+ 465              		.cfi_def_cfa_offset 16
+ 466 0004 00AF     		add	r7, sp, #0
+ 467              		.cfi_def_cfa_register 7
+ 468 0006 021C     		mov	r2, r0
+ 469 0008 FB1D     		add	r3, r7, #7
+ 470 000a 1A70     		strb	r2, [r3]
+ 303:.\Generated_Source\PSoC4/PRS_2.c ****     CY_SET_REG8(PRS_2_POLYNOM_PTR, polynomial);
+ 471              		.loc 1 303 0
+ 472 000c 034B     		ldr	r3, .L37
+ 473 000e FA1D     		add	r2, r7, #7
+ 474 0010 1278     		ldrb	r2, [r2]
+ 475 0012 1A70     		strb	r2, [r3]
+ 304:.\Generated_Source\PSoC4/PRS_2.c ****     
+ 305:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 476              		.loc 1 305 0
+ 477 0014 BD46     		mov	sp, r7
+ 478 0016 02B0     		add	sp, sp, #8
+ 479              		@ sp needed
+ 480 0018 80BD     		pop	{r7, pc}
+ 481              	.L38:
+ 482 001a C046     		.align	2
+ 483              	.L37:
+ 484 001c 13000F40 		.word	1074724883
+ 485              		.cfi_endproc
+ 486              	.LFE11:
+ 487              		.size	PRS_2_WritePolynomial, .-PRS_2_WritePolynomial
+ 488              		.section	.text.PRS_2_ReadPulse0,"ax",%progbits
+ 489              		.align	2
+ 490              		.global	PRS_2_ReadPulse0
+ 491              		.code	16
+ 492              		.thumb_func
+ 493              		.type	PRS_2_ReadPulse0, %function
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 15
+
+
+ 494              	PRS_2_ReadPulse0:
+ 495              	.LFB12:
+ 306:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 307:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 308:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ 309:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_ReadPulse0
+ 310:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 311:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 312:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+ 313:.\Generated_Source\PSoC4/PRS_2.c **** *  Reads the PrISM Pulse Density0 register.
+ 314:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 315:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:
+ 316:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 317:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 318:.\Generated_Source\PSoC4/PRS_2.c **** * Return:
+ 319:.\Generated_Source\PSoC4/PRS_2.c **** *  Pulse Density0 register value.
+ 320:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 321:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 322:.\Generated_Source\PSoC4/PRS_2.c **** uint8 PRS_2_ReadPulse0(void) 
+ 323:.\Generated_Source\PSoC4/PRS_2.c **** {
+ 496              		.loc 1 323 0
+ 497              		.cfi_startproc
+ 498 0000 80B5     		push	{r7, lr}
+ 499              		.cfi_def_cfa_offset 8
+ 500              		.cfi_offset 7, -8
+ 501              		.cfi_offset 14, -4
+ 502 0002 00AF     		add	r7, sp, #0
+ 503              		.cfi_def_cfa_register 7
+ 324:.\Generated_Source\PSoC4/PRS_2.c ****     return( CY_GET_REG8(PRS_2_DENSITY0_PTR) );
+ 504              		.loc 1 324 0
+ 505 0004 024B     		ldr	r3, .L41
+ 506 0006 1B78     		ldrb	r3, [r3]
+ 507 0008 DBB2     		uxtb	r3, r3
+ 325:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 508              		.loc 1 325 0
+ 509 000a 181C     		mov	r0, r3
+ 510 000c BD46     		mov	sp, r7
+ 511              		@ sp needed
+ 512 000e 80BD     		pop	{r7, pc}
+ 513              	.L42:
+ 514              		.align	2
+ 515              	.L41:
+ 516 0010 23000F40 		.word	1074724899
+ 517              		.cfi_endproc
+ 518              	.LFE12:
+ 519              		.size	PRS_2_ReadPulse0, .-PRS_2_ReadPulse0
+ 520              		.section	.text.PRS_2_WritePulse0,"ax",%progbits
+ 521              		.align	2
+ 522              		.global	PRS_2_WritePulse0
+ 523              		.code	16
+ 524              		.thumb_func
+ 525              		.type	PRS_2_WritePulse0, %function
+ 526              	PRS_2_WritePulse0:
+ 527              	.LFB13:
+ 326:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 327:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 328:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 16
+
+
+ 329:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_WritePulse0
+ 330:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 331:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 332:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+ 333:.\Generated_Source\PSoC4/PRS_2.c **** *  Writes the PrISM Pulse Density0 register with the Pulse Density value.
+ 334:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 335:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:
+ 336:.\Generated_Source\PSoC4/PRS_2.c **** *  pulseDensity0: Pulse Density value.
+ 337:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 338:.\Generated_Source\PSoC4/PRS_2.c **** * Return:
+ 339:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 340:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 341:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 342:.\Generated_Source\PSoC4/PRS_2.c **** void PRS_2_WritePulse0(uint8 pulseDensity0) \
+ 343:.\Generated_Source\PSoC4/PRS_2.c ****                                                                 
+ 344:.\Generated_Source\PSoC4/PRS_2.c **** {
+ 528              		.loc 1 344 0
+ 529              		.cfi_startproc
+ 530 0000 80B5     		push	{r7, lr}
+ 531              		.cfi_def_cfa_offset 8
+ 532              		.cfi_offset 7, -8
+ 533              		.cfi_offset 14, -4
+ 534 0002 82B0     		sub	sp, sp, #8
+ 535              		.cfi_def_cfa_offset 16
+ 536 0004 00AF     		add	r7, sp, #0
+ 537              		.cfi_def_cfa_register 7
+ 538 0006 021C     		mov	r2, r0
+ 539 0008 FB1D     		add	r3, r7, #7
+ 540 000a 1A70     		strb	r2, [r3]
+ 345:.\Generated_Source\PSoC4/PRS_2.c ****     CY_SET_REG8(PRS_2_DENSITY0_PTR, pulseDensity0);
+ 541              		.loc 1 345 0
+ 542 000c 034B     		ldr	r3, .L44
+ 543 000e FA1D     		add	r2, r7, #7
+ 544 0010 1278     		ldrb	r2, [r2]
+ 545 0012 1A70     		strb	r2, [r3]
+ 346:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 546              		.loc 1 346 0
+ 547 0014 BD46     		mov	sp, r7
+ 548 0016 02B0     		add	sp, sp, #8
+ 549              		@ sp needed
+ 550 0018 80BD     		pop	{r7, pc}
+ 551              	.L45:
+ 552 001a C046     		.align	2
+ 553              	.L44:
+ 554 001c 23000F40 		.word	1074724899
+ 555              		.cfi_endproc
+ 556              	.LFE13:
+ 557              		.size	PRS_2_WritePulse0, .-PRS_2_WritePulse0
+ 558              		.section	.text.PRS_2_ReadPulse1,"ax",%progbits
+ 559              		.align	2
+ 560              		.global	PRS_2_ReadPulse1
+ 561              		.code	16
+ 562              		.thumb_func
+ 563              		.type	PRS_2_ReadPulse1, %function
+ 564              	PRS_2_ReadPulse1:
+ 565              	.LFB14:
+ 347:.\Generated_Source\PSoC4/PRS_2.c **** 
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 17
+
+
+ 348:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 349:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ 350:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_ReadPulse1
+ 351:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 352:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 353:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+ 354:.\Generated_Source\PSoC4/PRS_2.c **** *  Reads the PrISM Pulse Density1 register.
+ 355:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 356:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:
+ 357:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 358:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 359:.\Generated_Source\PSoC4/PRS_2.c **** * Return:
+ 360:.\Generated_Source\PSoC4/PRS_2.c **** *  Pulse Density1 register value.
+ 361:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 362:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 363:.\Generated_Source\PSoC4/PRS_2.c **** uint8 PRS_2_ReadPulse1(void) 
+ 364:.\Generated_Source\PSoC4/PRS_2.c **** {
+ 566              		.loc 1 364 0
+ 567              		.cfi_startproc
+ 568 0000 80B5     		push	{r7, lr}
+ 569              		.cfi_def_cfa_offset 8
+ 570              		.cfi_offset 7, -8
+ 571              		.cfi_offset 14, -4
+ 572 0002 00AF     		add	r7, sp, #0
+ 573              		.cfi_def_cfa_register 7
+ 365:.\Generated_Source\PSoC4/PRS_2.c ****     return( CY_GET_REG8(PRS_2_DENSITY1_PTR) );
+ 574              		.loc 1 365 0
+ 575 0004 024B     		ldr	r3, .L48
+ 576 0006 1B78     		ldrb	r3, [r3]
+ 577 0008 DBB2     		uxtb	r3, r3
+ 366:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 578              		.loc 1 366 0
+ 579 000a 181C     		mov	r0, r3
+ 580 000c BD46     		mov	sp, r7
+ 581              		@ sp needed
+ 582 000e 80BD     		pop	{r7, pc}
+ 583              	.L49:
+ 584              		.align	2
+ 585              	.L48:
+ 586 0010 33000F40 		.word	1074724915
+ 587              		.cfi_endproc
+ 588              	.LFE14:
+ 589              		.size	PRS_2_ReadPulse1, .-PRS_2_ReadPulse1
+ 590              		.section	.text.PRS_2_WritePulse1,"ax",%progbits
+ 591              		.align	2
+ 592              		.global	PRS_2_WritePulse1
+ 593              		.code	16
+ 594              		.thumb_func
+ 595              		.type	PRS_2_WritePulse1, %function
+ 596              	PRS_2_WritePulse1:
+ 597              	.LFB15:
+ 367:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 368:.\Generated_Source\PSoC4/PRS_2.c **** 
+ 369:.\Generated_Source\PSoC4/PRS_2.c **** /*******************************************************************************
+ 370:.\Generated_Source\PSoC4/PRS_2.c **** * FUNCTION NAME:   PRS_2_WritePulse1
+ 371:.\Generated_Source\PSoC4/PRS_2.c **** ********************************************************************************
+ 372:.\Generated_Source\PSoC4/PRS_2.c **** *
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 18
+
+
+ 373:.\Generated_Source\PSoC4/PRS_2.c **** * Summary:
+ 374:.\Generated_Source\PSoC4/PRS_2.c **** *  Writes the PrISM Pulse Density1 register with the Pulse Density value.
+ 375:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 376:.\Generated_Source\PSoC4/PRS_2.c **** * Parameters:
+ 377:.\Generated_Source\PSoC4/PRS_2.c **** *  pulseDensity1: Pulse Density value.
+ 378:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 379:.\Generated_Source\PSoC4/PRS_2.c **** * Return:
+ 380:.\Generated_Source\PSoC4/PRS_2.c **** *  None.
+ 381:.\Generated_Source\PSoC4/PRS_2.c **** *
+ 382:.\Generated_Source\PSoC4/PRS_2.c **** *******************************************************************************/
+ 383:.\Generated_Source\PSoC4/PRS_2.c **** void PRS_2_WritePulse1(uint8 pulseDensity1) \
+ 384:.\Generated_Source\PSoC4/PRS_2.c ****                                                                     
+ 385:.\Generated_Source\PSoC4/PRS_2.c **** {
+ 598              		.loc 1 385 0
+ 599              		.cfi_startproc
+ 600 0000 80B5     		push	{r7, lr}
+ 601              		.cfi_def_cfa_offset 8
+ 602              		.cfi_offset 7, -8
+ 603              		.cfi_offset 14, -4
+ 604 0002 82B0     		sub	sp, sp, #8
+ 605              		.cfi_def_cfa_offset 16
+ 606 0004 00AF     		add	r7, sp, #0
+ 607              		.cfi_def_cfa_register 7
+ 608 0006 021C     		mov	r2, r0
+ 609 0008 FB1D     		add	r3, r7, #7
+ 610 000a 1A70     		strb	r2, [r3]
+ 386:.\Generated_Source\PSoC4/PRS_2.c ****     CY_SET_REG8(PRS_2_DENSITY1_PTR, pulseDensity1);
+ 611              		.loc 1 386 0
+ 612 000c 034B     		ldr	r3, .L51
+ 613 000e FA1D     		add	r2, r7, #7
+ 614 0010 1278     		ldrb	r2, [r2]
+ 615 0012 1A70     		strb	r2, [r3]
+ 387:.\Generated_Source\PSoC4/PRS_2.c **** }
+ 616              		.loc 1 387 0
+ 617 0014 BD46     		mov	sp, r7
+ 618 0016 02B0     		add	sp, sp, #8
+ 619              		@ sp needed
+ 620 0018 80BD     		pop	{r7, pc}
+ 621              	.L52:
+ 622 001a C046     		.align	2
+ 623              	.L51:
+ 624 001c 33000F40 		.word	1074724915
+ 625              		.cfi_endproc
+ 626              	.LFE15:
+ 627              		.size	PRS_2_WritePulse1, .-PRS_2_WritePulse1
+ 628              		.text
+ 629              	.Letext0:
+ 630              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 631              		.section	.debug_info,"",%progbits
+ 632              	.Ldebug_info0:
+ 633 0000 3F020000 		.4byte	0x23f
+ 634 0004 0400     		.2byte	0x4
+ 635 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 636 000a 04       		.byte	0x4
+ 637 000b 01       		.uleb128 0x1
+ 638 000c 9A000000 		.4byte	.LASF35
+ 639 0010 01       		.byte	0x1
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 19
+
+
+ 640 0011 98020000 		.4byte	.LASF36
+ 641 0015 80010000 		.4byte	.LASF37
+ 642 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 643 001d 00000000 		.4byte	0
+ 644 0021 00000000 		.4byte	.Ldebug_line0
+ 645 0025 02       		.uleb128 0x2
+ 646 0026 01       		.byte	0x1
+ 647 0027 06       		.byte	0x6
+ 648 0028 8C020000 		.4byte	.LASF0
+ 649 002c 02       		.uleb128 0x2
+ 650 002d 01       		.byte	0x1
+ 651 002e 08       		.byte	0x8
+ 652 002f 16010000 		.4byte	.LASF1
+ 653 0033 02       		.uleb128 0x2
+ 654 0034 02       		.byte	0x2
+ 655 0035 05       		.byte	0x5
+ 656 0036 52020000 		.4byte	.LASF2
+ 657 003a 02       		.uleb128 0x2
+ 658 003b 02       		.byte	0x2
+ 659 003c 07       		.byte	0x7
+ 660 003d 44000000 		.4byte	.LASF3
+ 661 0041 02       		.uleb128 0x2
+ 662 0042 04       		.byte	0x4
+ 663 0043 05       		.byte	0x5
+ 664 0044 71020000 		.4byte	.LASF4
+ 665 0048 02       		.uleb128 0x2
+ 666 0049 04       		.byte	0x4
+ 667 004a 07       		.byte	0x7
+ 668 004b 29010000 		.4byte	.LASF5
+ 669 004f 02       		.uleb128 0x2
+ 670 0050 08       		.byte	0x8
+ 671 0051 05       		.byte	0x5
+ 672 0052 04020000 		.4byte	.LASF6
+ 673 0056 02       		.uleb128 0x2
+ 674 0057 08       		.byte	0x8
+ 675 0058 07       		.byte	0x7
+ 676 0059 D7010000 		.4byte	.LASF7
+ 677 005d 03       		.uleb128 0x3
+ 678 005e 04       		.byte	0x4
+ 679 005f 05       		.byte	0x5
+ 680 0060 696E7400 		.ascii	"int\000"
+ 681 0064 02       		.uleb128 0x2
+ 682 0065 04       		.byte	0x4
+ 683 0066 07       		.byte	0x7
+ 684 0067 CA010000 		.4byte	.LASF8
+ 685 006b 04       		.uleb128 0x4
+ 686 006c 3B010000 		.4byte	.LASF12
+ 687 0070 02       		.byte	0x2
+ 688 0071 A1       		.byte	0xa1
+ 689 0072 2C000000 		.4byte	0x2c
+ 690 0076 02       		.uleb128 0x2
+ 691 0077 04       		.byte	0x4
+ 692 0078 04       		.byte	0x4
+ 693 0079 94000000 		.4byte	.LASF9
+ 694 007d 02       		.uleb128 0x2
+ 695 007e 08       		.byte	0x8
+ 696 007f 04       		.byte	0x4
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 20
+
+
+ 697 0080 52010000 		.4byte	.LASF10
+ 698 0084 02       		.uleb128 0x2
+ 699 0085 01       		.byte	0x1
+ 700 0086 08       		.byte	0x8
+ 701 0087 26020000 		.4byte	.LASF11
+ 702 008b 05       		.uleb128 0x5
+ 703 008c 24010000 		.4byte	.LASF13
+ 704 0090 02       		.byte	0x2
+ 705 0091 4B01     		.2byte	0x14b
+ 706 0093 97000000 		.4byte	0x97
+ 707 0097 06       		.uleb128 0x6
+ 708 0098 6B000000 		.4byte	0x6b
+ 709 009c 02       		.uleb128 0x2
+ 710 009d 04       		.byte	0x4
+ 711 009e 07       		.byte	0x7
+ 712 009f EE010000 		.4byte	.LASF14
+ 713 00a3 07       		.uleb128 0x7
+ 714 00a4 BE010000 		.4byte	.LASF15
+ 715 00a8 01       		.byte	0x1
+ 716 00a9 36       		.byte	0x36
+ 717 00aa 00000000 		.4byte	.LFB2
+ 718 00ae 24000000 		.4byte	.LFE2-.LFB2
+ 719 00b2 01       		.uleb128 0x1
+ 720 00b3 9C       		.byte	0x9c
+ 721 00b4 08       		.uleb128 0x8
+ 722 00b5 47020000 		.4byte	.LASF18
+ 723 00b9 01       		.byte	0x1
+ 724 00ba 52       		.byte	0x52
+ 725 00bb 00000000 		.4byte	.LFB3
+ 726 00bf 70000000 		.4byte	.LFE3-.LFB3
+ 727 00c3 01       		.uleb128 0x1
+ 728 00c4 9C       		.byte	0x9c
+ 729 00c5 D8000000 		.4byte	0xd8
+ 730 00c9 09       		.uleb128 0x9
+ 731 00ca 41010000 		.4byte	.LASF38
+ 732 00ce 01       		.byte	0x1
+ 733 00cf 54       		.byte	0x54
+ 734 00d0 6B000000 		.4byte	0x6b
+ 735 00d4 02       		.uleb128 0x2
+ 736 00d5 91       		.byte	0x91
+ 737 00d6 6F       		.sleb128 -17
+ 738 00d7 00       		.byte	0
+ 739 00d8 0A       		.uleb128 0xa
+ 740 00d9 F7010000 		.4byte	.LASF16
+ 741 00dd 01       		.byte	0x1
+ 742 00de 81       		.byte	0x81
+ 743 00df 00000000 		.4byte	.LFB4
+ 744 00e3 1C000000 		.4byte	.LFE4-.LFB4
+ 745 00e7 01       		.uleb128 0x1
+ 746 00e8 9C       		.byte	0x9c
+ 747 00e9 0A       		.uleb128 0xa
+ 748 00ea 23000000 		.4byte	.LASF17
+ 749 00ee 01       		.byte	0x1
+ 750 00ef 98       		.byte	0x98
+ 751 00f0 00000000 		.4byte	.LFB5
+ 752 00f4 1C000000 		.4byte	.LFE5-.LFB5
+ 753 00f8 01       		.uleb128 0x1
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 21
+
+
+ 754 00f9 9C       		.byte	0x9c
+ 755 00fa 0B       		.uleb128 0xb
+ 756 00fb 12020000 		.4byte	.LASF19
+ 757 00ff 01       		.byte	0x1
+ 758 0100 B3       		.byte	0xb3
+ 759 0101 00000000 		.4byte	.LFB6
+ 760 0105 40000000 		.4byte	.LFE6-.LFB6
+ 761 0109 01       		.uleb128 0x1
+ 762 010a 9C       		.byte	0x9c
+ 763 010b 1E010000 		.4byte	0x11e
+ 764 010f 0C       		.uleb128 0xc
+ 765 0110 89000000 		.4byte	.LASF21
+ 766 0114 01       		.byte	0x1
+ 767 0115 B3       		.byte	0xb3
+ 768 0116 6B000000 		.4byte	0x6b
+ 769 011a 02       		.uleb128 0x2
+ 770 011b 91       		.byte	0x91
+ 771 011c 77       		.sleb128 -9
+ 772 011d 00       		.byte	0
+ 773 011e 0B       		.uleb128 0xb
+ 774 011f B9020000 		.4byte	.LASF20
+ 775 0123 01       		.byte	0x1
+ 776 0124 CF       		.byte	0xcf
+ 777 0125 00000000 		.4byte	.LFB7
+ 778 0129 40000000 		.4byte	.LFE7-.LFB7
+ 779 012d 01       		.uleb128 0x1
+ 780 012e 9C       		.byte	0x9c
+ 781 012f 42010000 		.4byte	0x142
+ 782 0133 0C       		.uleb128 0xc
+ 783 0134 75010000 		.4byte	.LASF22
+ 784 0138 01       		.byte	0x1
+ 785 0139 CF       		.byte	0xcf
+ 786 013a 6B000000 		.4byte	0x6b
+ 787 013e 02       		.uleb128 0x2
+ 788 013f 91       		.byte	0x91
+ 789 0140 77       		.sleb128 -9
+ 790 0141 00       		.byte	0
+ 791 0142 0D       		.uleb128 0xd
+ 792 0143 6C000000 		.4byte	.LASF25
+ 793 0147 01       		.byte	0x1
+ 794 0148 EC       		.byte	0xec
+ 795 0149 6B000000 		.4byte	0x6b
+ 796 014d 00000000 		.4byte	.LFB8
+ 797 0151 14000000 		.4byte	.LFE8-.LFB8
+ 798 0155 01       		.uleb128 0x1
+ 799 0156 9C       		.byte	0x9c
+ 800 0157 0E       		.uleb128 0xe
+ 801 0158 61020000 		.4byte	.LASF23
+ 802 015c 01       		.byte	0x1
+ 803 015d 0001     		.2byte	0x100
+ 804 015f 00000000 		.4byte	.LFB9
+ 805 0163 34000000 		.4byte	.LFE9-.LFB9
+ 806 0167 01       		.uleb128 0x1
+ 807 0168 9C       		.byte	0x9c
+ 808 0169 7D010000 		.4byte	0x17d
+ 809 016d 0F       		.uleb128 0xf
+ 810 016e 5C020000 		.4byte	.LASF24
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 22
+
+
+ 811 0172 01       		.byte	0x1
+ 812 0173 0001     		.2byte	0x100
+ 813 0175 6B000000 		.4byte	0x6b
+ 814 0179 02       		.uleb128 0x2
+ 815 017a 91       		.byte	0x91
+ 816 017b 77       		.sleb128 -9
+ 817 017c 00       		.byte	0
+ 818 017d 10       		.uleb128 0x10
+ 819 017e 57000000 		.4byte	.LASF26
+ 820 0182 01       		.byte	0x1
+ 821 0183 1801     		.2byte	0x118
+ 822 0185 6B000000 		.4byte	0x6b
+ 823 0189 00000000 		.4byte	.LFB10
+ 824 018d 14000000 		.4byte	.LFE10-.LFB10
+ 825 0191 01       		.uleb128 0x1
+ 826 0192 9C       		.byte	0x9c
+ 827 0193 0E       		.uleb128 0xe
+ 828 0194 2E000000 		.4byte	.LASF27
+ 829 0198 01       		.byte	0x1
+ 830 0199 2C01     		.2byte	0x12c
+ 831 019b 00000000 		.4byte	.LFB11
+ 832 019f 20000000 		.4byte	.LFE11-.LFB11
+ 833 01a3 01       		.uleb128 0x1
+ 834 01a4 9C       		.byte	0x9c
+ 835 01a5 B9010000 		.4byte	0x1b9
+ 836 01a9 0F       		.uleb128 0xf
+ 837 01aa 6A010000 		.4byte	.LASF28
+ 838 01ae 01       		.byte	0x1
+ 839 01af 2C01     		.2byte	0x12c
+ 840 01b1 6B000000 		.4byte	0x6b
+ 841 01b5 02       		.uleb128 0x2
+ 842 01b6 91       		.byte	0x91
+ 843 01b7 77       		.sleb128 -9
+ 844 01b8 00       		.byte	0
+ 845 01b9 10       		.uleb128 0x10
+ 846 01ba 59010000 		.4byte	.LASF29
+ 847 01be 01       		.byte	0x1
+ 848 01bf 4201     		.2byte	0x142
+ 849 01c1 6B000000 		.4byte	0x6b
+ 850 01c5 00000000 		.4byte	.LFB12
+ 851 01c9 14000000 		.4byte	.LFE12-.LFB12
+ 852 01cd 01       		.uleb128 0x1
+ 853 01ce 9C       		.byte	0x9c
+ 854 01cf 0E       		.uleb128 0xe
+ 855 01d0 11000000 		.4byte	.LASF30
+ 856 01d4 01       		.byte	0x1
+ 857 01d5 5601     		.2byte	0x156
+ 858 01d7 00000000 		.4byte	.LFB13
+ 859 01db 20000000 		.4byte	.LFE13-.LFB13
+ 860 01df 01       		.uleb128 0x1
+ 861 01e0 9C       		.byte	0x9c
+ 862 01e1 F5010000 		.4byte	0x1f5
+ 863 01e5 0F       		.uleb128 0xf
+ 864 01e6 2B020000 		.4byte	.LASF31
+ 865 01ea 01       		.byte	0x1
+ 866 01eb 5601     		.2byte	0x156
+ 867 01ed 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 23
+
+
+ 868 01f1 02       		.uleb128 0x2
+ 869 01f2 91       		.byte	0x91
+ 870 01f3 77       		.sleb128 -9
+ 871 01f4 00       		.byte	0
+ 872 01f5 10       		.uleb128 0x10
+ 873 01f6 00000000 		.4byte	.LASF32
+ 874 01fa 01       		.byte	0x1
+ 875 01fb 6B01     		.2byte	0x16b
+ 876 01fd 6B000000 		.4byte	0x6b
+ 877 0201 00000000 		.4byte	.LFB14
+ 878 0205 14000000 		.4byte	.LFE14-.LFB14
+ 879 0209 01       		.uleb128 0x1
+ 880 020a 9C       		.byte	0x9c
+ 881 020b 0E       		.uleb128 0xe
+ 882 020c 7A020000 		.4byte	.LASF33
+ 883 0210 01       		.byte	0x1
+ 884 0211 7F01     		.2byte	0x17f
+ 885 0213 00000000 		.4byte	.LFB15
+ 886 0217 20000000 		.4byte	.LFE15-.LFB15
+ 887 021b 01       		.uleb128 0x1
+ 888 021c 9C       		.byte	0x9c
+ 889 021d 31020000 		.4byte	0x231
+ 890 0221 0F       		.uleb128 0xf
+ 891 0222 39020000 		.4byte	.LASF34
+ 892 0226 01       		.byte	0x1
+ 893 0227 7F01     		.2byte	0x17f
+ 894 0229 6B000000 		.4byte	0x6b
+ 895 022d 02       		.uleb128 0x2
+ 896 022e 91       		.byte	0x91
+ 897 022f 77       		.sleb128 -9
+ 898 0230 00       		.byte	0
+ 899 0231 11       		.uleb128 0x11
+ 900 0232 7B000000 		.4byte	.LASF39
+ 901 0236 01       		.byte	0x1
+ 902 0237 1A       		.byte	0x1a
+ 903 0238 6B000000 		.4byte	0x6b
+ 904 023c 05       		.uleb128 0x5
+ 905 023d 03       		.byte	0x3
+ 906 023e 00000000 		.4byte	PRS_2_initVar
+ 907 0242 00       		.byte	0
+ 908              		.section	.debug_abbrev,"",%progbits
+ 909              	.Ldebug_abbrev0:
+ 910 0000 01       		.uleb128 0x1
+ 911 0001 11       		.uleb128 0x11
+ 912 0002 01       		.byte	0x1
+ 913 0003 25       		.uleb128 0x25
+ 914 0004 0E       		.uleb128 0xe
+ 915 0005 13       		.uleb128 0x13
+ 916 0006 0B       		.uleb128 0xb
+ 917 0007 03       		.uleb128 0x3
+ 918 0008 0E       		.uleb128 0xe
+ 919 0009 1B       		.uleb128 0x1b
+ 920 000a 0E       		.uleb128 0xe
+ 921 000b 55       		.uleb128 0x55
+ 922 000c 17       		.uleb128 0x17
+ 923 000d 11       		.uleb128 0x11
+ 924 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 24
+
+
+ 925 000f 10       		.uleb128 0x10
+ 926 0010 17       		.uleb128 0x17
+ 927 0011 00       		.byte	0
+ 928 0012 00       		.byte	0
+ 929 0013 02       		.uleb128 0x2
+ 930 0014 24       		.uleb128 0x24
+ 931 0015 00       		.byte	0
+ 932 0016 0B       		.uleb128 0xb
+ 933 0017 0B       		.uleb128 0xb
+ 934 0018 3E       		.uleb128 0x3e
+ 935 0019 0B       		.uleb128 0xb
+ 936 001a 03       		.uleb128 0x3
+ 937 001b 0E       		.uleb128 0xe
+ 938 001c 00       		.byte	0
+ 939 001d 00       		.byte	0
+ 940 001e 03       		.uleb128 0x3
+ 941 001f 24       		.uleb128 0x24
+ 942 0020 00       		.byte	0
+ 943 0021 0B       		.uleb128 0xb
+ 944 0022 0B       		.uleb128 0xb
+ 945 0023 3E       		.uleb128 0x3e
+ 946 0024 0B       		.uleb128 0xb
+ 947 0025 03       		.uleb128 0x3
+ 948 0026 08       		.uleb128 0x8
+ 949 0027 00       		.byte	0
+ 950 0028 00       		.byte	0
+ 951 0029 04       		.uleb128 0x4
+ 952 002a 16       		.uleb128 0x16
+ 953 002b 00       		.byte	0
+ 954 002c 03       		.uleb128 0x3
+ 955 002d 0E       		.uleb128 0xe
+ 956 002e 3A       		.uleb128 0x3a
+ 957 002f 0B       		.uleb128 0xb
+ 958 0030 3B       		.uleb128 0x3b
+ 959 0031 0B       		.uleb128 0xb
+ 960 0032 49       		.uleb128 0x49
+ 961 0033 13       		.uleb128 0x13
+ 962 0034 00       		.byte	0
+ 963 0035 00       		.byte	0
+ 964 0036 05       		.uleb128 0x5
+ 965 0037 16       		.uleb128 0x16
+ 966 0038 00       		.byte	0
+ 967 0039 03       		.uleb128 0x3
+ 968 003a 0E       		.uleb128 0xe
+ 969 003b 3A       		.uleb128 0x3a
+ 970 003c 0B       		.uleb128 0xb
+ 971 003d 3B       		.uleb128 0x3b
+ 972 003e 05       		.uleb128 0x5
+ 973 003f 49       		.uleb128 0x49
+ 974 0040 13       		.uleb128 0x13
+ 975 0041 00       		.byte	0
+ 976 0042 00       		.byte	0
+ 977 0043 06       		.uleb128 0x6
+ 978 0044 35       		.uleb128 0x35
+ 979 0045 00       		.byte	0
+ 980 0046 49       		.uleb128 0x49
+ 981 0047 13       		.uleb128 0x13
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 25
+
+
+ 982 0048 00       		.byte	0
+ 983 0049 00       		.byte	0
+ 984 004a 07       		.uleb128 0x7
+ 985 004b 2E       		.uleb128 0x2e
+ 986 004c 00       		.byte	0
+ 987 004d 3F       		.uleb128 0x3f
+ 988 004e 19       		.uleb128 0x19
+ 989 004f 03       		.uleb128 0x3
+ 990 0050 0E       		.uleb128 0xe
+ 991 0051 3A       		.uleb128 0x3a
+ 992 0052 0B       		.uleb128 0xb
+ 993 0053 3B       		.uleb128 0x3b
+ 994 0054 0B       		.uleb128 0xb
+ 995 0055 27       		.uleb128 0x27
+ 996 0056 19       		.uleb128 0x19
+ 997 0057 11       		.uleb128 0x11
+ 998 0058 01       		.uleb128 0x1
+ 999 0059 12       		.uleb128 0x12
+ 1000 005a 06       		.uleb128 0x6
+ 1001 005b 40       		.uleb128 0x40
+ 1002 005c 18       		.uleb128 0x18
+ 1003 005d 9642     		.uleb128 0x2116
+ 1004 005f 19       		.uleb128 0x19
+ 1005 0060 00       		.byte	0
+ 1006 0061 00       		.byte	0
+ 1007 0062 08       		.uleb128 0x8
+ 1008 0063 2E       		.uleb128 0x2e
+ 1009 0064 01       		.byte	0x1
+ 1010 0065 3F       		.uleb128 0x3f
+ 1011 0066 19       		.uleb128 0x19
+ 1012 0067 03       		.uleb128 0x3
+ 1013 0068 0E       		.uleb128 0xe
+ 1014 0069 3A       		.uleb128 0x3a
+ 1015 006a 0B       		.uleb128 0xb
+ 1016 006b 3B       		.uleb128 0x3b
+ 1017 006c 0B       		.uleb128 0xb
+ 1018 006d 27       		.uleb128 0x27
+ 1019 006e 19       		.uleb128 0x19
+ 1020 006f 11       		.uleb128 0x11
+ 1021 0070 01       		.uleb128 0x1
+ 1022 0071 12       		.uleb128 0x12
+ 1023 0072 06       		.uleb128 0x6
+ 1024 0073 40       		.uleb128 0x40
+ 1025 0074 18       		.uleb128 0x18
+ 1026 0075 9642     		.uleb128 0x2116
+ 1027 0077 19       		.uleb128 0x19
+ 1028 0078 01       		.uleb128 0x1
+ 1029 0079 13       		.uleb128 0x13
+ 1030 007a 00       		.byte	0
+ 1031 007b 00       		.byte	0
+ 1032 007c 09       		.uleb128 0x9
+ 1033 007d 34       		.uleb128 0x34
+ 1034 007e 00       		.byte	0
+ 1035 007f 03       		.uleb128 0x3
+ 1036 0080 0E       		.uleb128 0xe
+ 1037 0081 3A       		.uleb128 0x3a
+ 1038 0082 0B       		.uleb128 0xb
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 26
+
+
+ 1039 0083 3B       		.uleb128 0x3b
+ 1040 0084 0B       		.uleb128 0xb
+ 1041 0085 49       		.uleb128 0x49
+ 1042 0086 13       		.uleb128 0x13
+ 1043 0087 02       		.uleb128 0x2
+ 1044 0088 18       		.uleb128 0x18
+ 1045 0089 00       		.byte	0
+ 1046 008a 00       		.byte	0
+ 1047 008b 0A       		.uleb128 0xa
+ 1048 008c 2E       		.uleb128 0x2e
+ 1049 008d 00       		.byte	0
+ 1050 008e 3F       		.uleb128 0x3f
+ 1051 008f 19       		.uleb128 0x19
+ 1052 0090 03       		.uleb128 0x3
+ 1053 0091 0E       		.uleb128 0xe
+ 1054 0092 3A       		.uleb128 0x3a
+ 1055 0093 0B       		.uleb128 0xb
+ 1056 0094 3B       		.uleb128 0x3b
+ 1057 0095 0B       		.uleb128 0xb
+ 1058 0096 27       		.uleb128 0x27
+ 1059 0097 19       		.uleb128 0x19
+ 1060 0098 11       		.uleb128 0x11
+ 1061 0099 01       		.uleb128 0x1
+ 1062 009a 12       		.uleb128 0x12
+ 1063 009b 06       		.uleb128 0x6
+ 1064 009c 40       		.uleb128 0x40
+ 1065 009d 18       		.uleb128 0x18
+ 1066 009e 9742     		.uleb128 0x2117
+ 1067 00a0 19       		.uleb128 0x19
+ 1068 00a1 00       		.byte	0
+ 1069 00a2 00       		.byte	0
+ 1070 00a3 0B       		.uleb128 0xb
+ 1071 00a4 2E       		.uleb128 0x2e
+ 1072 00a5 01       		.byte	0x1
+ 1073 00a6 3F       		.uleb128 0x3f
+ 1074 00a7 19       		.uleb128 0x19
+ 1075 00a8 03       		.uleb128 0x3
+ 1076 00a9 0E       		.uleb128 0xe
+ 1077 00aa 3A       		.uleb128 0x3a
+ 1078 00ab 0B       		.uleb128 0xb
+ 1079 00ac 3B       		.uleb128 0x3b
+ 1080 00ad 0B       		.uleb128 0xb
+ 1081 00ae 27       		.uleb128 0x27
+ 1082 00af 19       		.uleb128 0x19
+ 1083 00b0 11       		.uleb128 0x11
+ 1084 00b1 01       		.uleb128 0x1
+ 1085 00b2 12       		.uleb128 0x12
+ 1086 00b3 06       		.uleb128 0x6
+ 1087 00b4 40       		.uleb128 0x40
+ 1088 00b5 18       		.uleb128 0x18
+ 1089 00b6 9742     		.uleb128 0x2117
+ 1090 00b8 19       		.uleb128 0x19
+ 1091 00b9 01       		.uleb128 0x1
+ 1092 00ba 13       		.uleb128 0x13
+ 1093 00bb 00       		.byte	0
+ 1094 00bc 00       		.byte	0
+ 1095 00bd 0C       		.uleb128 0xc
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 27
+
+
+ 1096 00be 05       		.uleb128 0x5
+ 1097 00bf 00       		.byte	0
+ 1098 00c0 03       		.uleb128 0x3
+ 1099 00c1 0E       		.uleb128 0xe
+ 1100 00c2 3A       		.uleb128 0x3a
+ 1101 00c3 0B       		.uleb128 0xb
+ 1102 00c4 3B       		.uleb128 0x3b
+ 1103 00c5 0B       		.uleb128 0xb
+ 1104 00c6 49       		.uleb128 0x49
+ 1105 00c7 13       		.uleb128 0x13
+ 1106 00c8 02       		.uleb128 0x2
+ 1107 00c9 18       		.uleb128 0x18
+ 1108 00ca 00       		.byte	0
+ 1109 00cb 00       		.byte	0
+ 1110 00cc 0D       		.uleb128 0xd
+ 1111 00cd 2E       		.uleb128 0x2e
+ 1112 00ce 00       		.byte	0
+ 1113 00cf 3F       		.uleb128 0x3f
+ 1114 00d0 19       		.uleb128 0x19
+ 1115 00d1 03       		.uleb128 0x3
+ 1116 00d2 0E       		.uleb128 0xe
+ 1117 00d3 3A       		.uleb128 0x3a
+ 1118 00d4 0B       		.uleb128 0xb
+ 1119 00d5 3B       		.uleb128 0x3b
+ 1120 00d6 0B       		.uleb128 0xb
+ 1121 00d7 27       		.uleb128 0x27
+ 1122 00d8 19       		.uleb128 0x19
+ 1123 00d9 49       		.uleb128 0x49
+ 1124 00da 13       		.uleb128 0x13
+ 1125 00db 11       		.uleb128 0x11
+ 1126 00dc 01       		.uleb128 0x1
+ 1127 00dd 12       		.uleb128 0x12
+ 1128 00de 06       		.uleb128 0x6
+ 1129 00df 40       		.uleb128 0x40
+ 1130 00e0 18       		.uleb128 0x18
+ 1131 00e1 9742     		.uleb128 0x2117
+ 1132 00e3 19       		.uleb128 0x19
+ 1133 00e4 00       		.byte	0
+ 1134 00e5 00       		.byte	0
+ 1135 00e6 0E       		.uleb128 0xe
+ 1136 00e7 2E       		.uleb128 0x2e
+ 1137 00e8 01       		.byte	0x1
+ 1138 00e9 3F       		.uleb128 0x3f
+ 1139 00ea 19       		.uleb128 0x19
+ 1140 00eb 03       		.uleb128 0x3
+ 1141 00ec 0E       		.uleb128 0xe
+ 1142 00ed 3A       		.uleb128 0x3a
+ 1143 00ee 0B       		.uleb128 0xb
+ 1144 00ef 3B       		.uleb128 0x3b
+ 1145 00f0 05       		.uleb128 0x5
+ 1146 00f1 27       		.uleb128 0x27
+ 1147 00f2 19       		.uleb128 0x19
+ 1148 00f3 11       		.uleb128 0x11
+ 1149 00f4 01       		.uleb128 0x1
+ 1150 00f5 12       		.uleb128 0x12
+ 1151 00f6 06       		.uleb128 0x6
+ 1152 00f7 40       		.uleb128 0x40
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 28
+
+
+ 1153 00f8 18       		.uleb128 0x18
+ 1154 00f9 9742     		.uleb128 0x2117
+ 1155 00fb 19       		.uleb128 0x19
+ 1156 00fc 01       		.uleb128 0x1
+ 1157 00fd 13       		.uleb128 0x13
+ 1158 00fe 00       		.byte	0
+ 1159 00ff 00       		.byte	0
+ 1160 0100 0F       		.uleb128 0xf
+ 1161 0101 05       		.uleb128 0x5
+ 1162 0102 00       		.byte	0
+ 1163 0103 03       		.uleb128 0x3
+ 1164 0104 0E       		.uleb128 0xe
+ 1165 0105 3A       		.uleb128 0x3a
+ 1166 0106 0B       		.uleb128 0xb
+ 1167 0107 3B       		.uleb128 0x3b
+ 1168 0108 05       		.uleb128 0x5
+ 1169 0109 49       		.uleb128 0x49
+ 1170 010a 13       		.uleb128 0x13
+ 1171 010b 02       		.uleb128 0x2
+ 1172 010c 18       		.uleb128 0x18
+ 1173 010d 00       		.byte	0
+ 1174 010e 00       		.byte	0
+ 1175 010f 10       		.uleb128 0x10
+ 1176 0110 2E       		.uleb128 0x2e
+ 1177 0111 00       		.byte	0
+ 1178 0112 3F       		.uleb128 0x3f
+ 1179 0113 19       		.uleb128 0x19
+ 1180 0114 03       		.uleb128 0x3
+ 1181 0115 0E       		.uleb128 0xe
+ 1182 0116 3A       		.uleb128 0x3a
+ 1183 0117 0B       		.uleb128 0xb
+ 1184 0118 3B       		.uleb128 0x3b
+ 1185 0119 05       		.uleb128 0x5
+ 1186 011a 27       		.uleb128 0x27
+ 1187 011b 19       		.uleb128 0x19
+ 1188 011c 49       		.uleb128 0x49
+ 1189 011d 13       		.uleb128 0x13
+ 1190 011e 11       		.uleb128 0x11
+ 1191 011f 01       		.uleb128 0x1
+ 1192 0120 12       		.uleb128 0x12
+ 1193 0121 06       		.uleb128 0x6
+ 1194 0122 40       		.uleb128 0x40
+ 1195 0123 18       		.uleb128 0x18
+ 1196 0124 9742     		.uleb128 0x2117
+ 1197 0126 19       		.uleb128 0x19
+ 1198 0127 00       		.byte	0
+ 1199 0128 00       		.byte	0
+ 1200 0129 11       		.uleb128 0x11
+ 1201 012a 34       		.uleb128 0x34
+ 1202 012b 00       		.byte	0
+ 1203 012c 03       		.uleb128 0x3
+ 1204 012d 0E       		.uleb128 0xe
+ 1205 012e 3A       		.uleb128 0x3a
+ 1206 012f 0B       		.uleb128 0xb
+ 1207 0130 3B       		.uleb128 0x3b
+ 1208 0131 0B       		.uleb128 0xb
+ 1209 0132 49       		.uleb128 0x49
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 29
+
+
+ 1210 0133 13       		.uleb128 0x13
+ 1211 0134 3F       		.uleb128 0x3f
+ 1212 0135 19       		.uleb128 0x19
+ 1213 0136 02       		.uleb128 0x2
+ 1214 0137 18       		.uleb128 0x18
+ 1215 0138 00       		.byte	0
+ 1216 0139 00       		.byte	0
+ 1217 013a 00       		.byte	0
+ 1218              		.section	.debug_aranges,"",%progbits
+ 1219 0000 84000000 		.4byte	0x84
+ 1220 0004 0200     		.2byte	0x2
+ 1221 0006 00000000 		.4byte	.Ldebug_info0
+ 1222 000a 04       		.byte	0x4
+ 1223 000b 00       		.byte	0
+ 1224 000c 0000     		.2byte	0
+ 1225 000e 0000     		.2byte	0
+ 1226 0010 00000000 		.4byte	.LFB2
+ 1227 0014 24000000 		.4byte	.LFE2-.LFB2
+ 1228 0018 00000000 		.4byte	.LFB3
+ 1229 001c 70000000 		.4byte	.LFE3-.LFB3
+ 1230 0020 00000000 		.4byte	.LFB4
+ 1231 0024 1C000000 		.4byte	.LFE4-.LFB4
+ 1232 0028 00000000 		.4byte	.LFB5
+ 1233 002c 1C000000 		.4byte	.LFE5-.LFB5
+ 1234 0030 00000000 		.4byte	.LFB6
+ 1235 0034 40000000 		.4byte	.LFE6-.LFB6
+ 1236 0038 00000000 		.4byte	.LFB7
+ 1237 003c 40000000 		.4byte	.LFE7-.LFB7
+ 1238 0040 00000000 		.4byte	.LFB8
+ 1239 0044 14000000 		.4byte	.LFE8-.LFB8
+ 1240 0048 00000000 		.4byte	.LFB9
+ 1241 004c 34000000 		.4byte	.LFE9-.LFB9
+ 1242 0050 00000000 		.4byte	.LFB10
+ 1243 0054 14000000 		.4byte	.LFE10-.LFB10
+ 1244 0058 00000000 		.4byte	.LFB11
+ 1245 005c 20000000 		.4byte	.LFE11-.LFB11
+ 1246 0060 00000000 		.4byte	.LFB12
+ 1247 0064 14000000 		.4byte	.LFE12-.LFB12
+ 1248 0068 00000000 		.4byte	.LFB13
+ 1249 006c 20000000 		.4byte	.LFE13-.LFB13
+ 1250 0070 00000000 		.4byte	.LFB14
+ 1251 0074 14000000 		.4byte	.LFE14-.LFB14
+ 1252 0078 00000000 		.4byte	.LFB15
+ 1253 007c 20000000 		.4byte	.LFE15-.LFB15
+ 1254 0080 00000000 		.4byte	0
+ 1255 0084 00000000 		.4byte	0
+ 1256              		.section	.debug_ranges,"",%progbits
+ 1257              	.Ldebug_ranges0:
+ 1258 0000 00000000 		.4byte	.LFB2
+ 1259 0004 24000000 		.4byte	.LFE2
+ 1260 0008 00000000 		.4byte	.LFB3
+ 1261 000c 70000000 		.4byte	.LFE3
+ 1262 0010 00000000 		.4byte	.LFB4
+ 1263 0014 1C000000 		.4byte	.LFE4
+ 1264 0018 00000000 		.4byte	.LFB5
+ 1265 001c 1C000000 		.4byte	.LFE5
+ 1266 0020 00000000 		.4byte	.LFB6
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 30
+
+
+ 1267 0024 40000000 		.4byte	.LFE6
+ 1268 0028 00000000 		.4byte	.LFB7
+ 1269 002c 40000000 		.4byte	.LFE7
+ 1270 0030 00000000 		.4byte	.LFB8
+ 1271 0034 14000000 		.4byte	.LFE8
+ 1272 0038 00000000 		.4byte	.LFB9
+ 1273 003c 34000000 		.4byte	.LFE9
+ 1274 0040 00000000 		.4byte	.LFB10
+ 1275 0044 14000000 		.4byte	.LFE10
+ 1276 0048 00000000 		.4byte	.LFB11
+ 1277 004c 20000000 		.4byte	.LFE11
+ 1278 0050 00000000 		.4byte	.LFB12
+ 1279 0054 14000000 		.4byte	.LFE12
+ 1280 0058 00000000 		.4byte	.LFB13
+ 1281 005c 20000000 		.4byte	.LFE13
+ 1282 0060 00000000 		.4byte	.LFB14
+ 1283 0064 14000000 		.4byte	.LFE14
+ 1284 0068 00000000 		.4byte	.LFB15
+ 1285 006c 20000000 		.4byte	.LFE15
+ 1286 0070 00000000 		.4byte	0
+ 1287 0074 00000000 		.4byte	0
+ 1288              		.section	.debug_line,"",%progbits
+ 1289              	.Ldebug_line0:
+ 1290 0000 56010000 		.section	.debug_str,"MS",%progbits,1
+ 1290      02004400 
+ 1290      00000201 
+ 1290      FB0E0D00 
+ 1290      01010101 
+ 1291              	.LASF32:
+ 1292 0000 5052535F 		.ascii	"PRS_2_ReadPulse1\000"
+ 1292      325F5265 
+ 1292      61645075 
+ 1292      6C736531 
+ 1292      00
+ 1293              	.LASF30:
+ 1294 0011 5052535F 		.ascii	"PRS_2_WritePulse0\000"
+ 1294      325F5772 
+ 1294      69746550 
+ 1294      756C7365 
+ 1294      3000
+ 1295              	.LASF17:
+ 1296 0023 5052535F 		.ascii	"PRS_2_Stop\000"
+ 1296      325F5374 
+ 1296      6F7000
+ 1297              	.LASF27:
+ 1298 002e 5052535F 		.ascii	"PRS_2_WritePolynomial\000"
+ 1298      325F5772 
+ 1298      69746550 
+ 1298      6F6C796E 
+ 1298      6F6D6961 
+ 1299              	.LASF3:
+ 1300 0044 73686F72 		.ascii	"short unsigned int\000"
+ 1300      7420756E 
+ 1300      7369676E 
+ 1300      65642069 
+ 1300      6E7400
+ 1301              	.LASF26:
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 31
+
+
+ 1302 0057 5052535F 		.ascii	"PRS_2_ReadPolynomial\000"
+ 1302      325F5265 
+ 1302      6164506F 
+ 1302      6C796E6F 
+ 1302      6D69616C 
+ 1303              	.LASF25:
+ 1304 006c 5052535F 		.ascii	"PRS_2_ReadSeed\000"
+ 1304      325F5265 
+ 1304      61645365 
+ 1304      656400
+ 1305              	.LASF39:
+ 1306 007b 5052535F 		.ascii	"PRS_2_initVar\000"
+ 1306      325F696E 
+ 1306      69745661 
+ 1306      7200
+ 1307              	.LASF21:
+ 1308 0089 70756C73 		.ascii	"pulse0Type\000"
+ 1308      65305479 
+ 1308      706500
+ 1309              	.LASF9:
+ 1310 0094 666C6F61 		.ascii	"float\000"
+ 1310      7400
+ 1311              	.LASF35:
+ 1312 009a 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1312      4320342E 
+ 1312      382E3420 
+ 1312      32303134 
+ 1312      30353236 
+ 1313 00cd 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1313      20726576 
+ 1313      6973696F 
+ 1313      6E203231 
+ 1313      31333538 
+ 1314 0100 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1314      66756E63 
+ 1314      74696F6E 
+ 1314      2D736563 
+ 1314      74696F6E 
+ 1315              	.LASF1:
+ 1316 0116 756E7369 		.ascii	"unsigned char\000"
+ 1316      676E6564 
+ 1316      20636861 
+ 1316      7200
+ 1317              	.LASF13:
+ 1318 0124 72656738 		.ascii	"reg8\000"
+ 1318      00
+ 1319              	.LASF5:
+ 1320 0129 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1320      20756E73 
+ 1320      69676E65 
+ 1320      6420696E 
+ 1320      7400
+ 1321              	.LASF12:
+ 1322 013b 75696E74 		.ascii	"uint8\000"
+ 1322      3800
+ 1323              	.LASF38:
+ 1324 0141 656E6162 		.ascii	"enableInterrupts\000"
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 32
+
+
+ 1324      6C65496E 
+ 1324      74657272 
+ 1324      75707473 
+ 1324      00
+ 1325              	.LASF10:
+ 1326 0152 646F7562 		.ascii	"double\000"
+ 1326      6C6500
+ 1327              	.LASF29:
+ 1328 0159 5052535F 		.ascii	"PRS_2_ReadPulse0\000"
+ 1328      325F5265 
+ 1328      61645075 
+ 1328      6C736530 
+ 1328      00
+ 1329              	.LASF28:
+ 1330 016a 706F6C79 		.ascii	"polynomial\000"
+ 1330      6E6F6D69 
+ 1330      616C00
+ 1331              	.LASF22:
+ 1332 0175 70756C73 		.ascii	"pulse1Type\000"
+ 1332      65315479 
+ 1332      706500
+ 1333              	.LASF37:
+ 1334 0180 433A5C55 		.ascii	"C:\\Users\\Manisha Goyal\\Desktop\\lab4\\BLE Lab 4\\"
+ 1334      73657273 
+ 1334      5C4D616E 
+ 1334      69736861 
+ 1334      20476F79 
+ 1335 01ae 424C4520 		.ascii	"BLE Lab 4.cydsn\000"
+ 1335      4C616220 
+ 1335      342E6379 
+ 1335      64736E00 
+ 1336              	.LASF15:
+ 1337 01be 5052535F 		.ascii	"PRS_2_Start\000"
+ 1337      325F5374 
+ 1337      61727400 
+ 1338              	.LASF8:
+ 1339 01ca 756E7369 		.ascii	"unsigned int\000"
+ 1339      676E6564 
+ 1339      20696E74 
+ 1339      00
+ 1340              	.LASF7:
+ 1341 01d7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1341      206C6F6E 
+ 1341      6720756E 
+ 1341      7369676E 
+ 1341      65642069 
+ 1342              	.LASF14:
+ 1343 01ee 73697A65 		.ascii	"sizetype\000"
+ 1343      74797065 
+ 1343      00
+ 1344              	.LASF16:
+ 1345 01f7 5052535F 		.ascii	"PRS_2_Enable\000"
+ 1345      325F456E 
+ 1345      61626C65 
+ 1345      00
+ 1346              	.LASF6:
+ 1347 0204 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 33
+
+
+ 1347      206C6F6E 
+ 1347      6720696E 
+ 1347      7400
+ 1348              	.LASF19:
+ 1349 0212 5052535F 		.ascii	"PRS_2_SetPulse0Mode\000"
+ 1349      325F5365 
+ 1349      7450756C 
+ 1349      7365304D 
+ 1349      6F646500 
+ 1350              	.LASF11:
+ 1351 0226 63686172 		.ascii	"char\000"
+ 1351      00
+ 1352              	.LASF31:
+ 1353 022b 70756C73 		.ascii	"pulseDensity0\000"
+ 1353      6544656E 
+ 1353      73697479 
+ 1353      3000
+ 1354              	.LASF34:
+ 1355 0239 70756C73 		.ascii	"pulseDensity1\000"
+ 1355      6544656E 
+ 1355      73697479 
+ 1355      3100
+ 1356              	.LASF18:
+ 1357 0247 5052535F 		.ascii	"PRS_2_Init\000"
+ 1357      325F496E 
+ 1357      697400
+ 1358              	.LASF2:
+ 1359 0252 73686F72 		.ascii	"short int\000"
+ 1359      7420696E 
+ 1359      7400
+ 1360              	.LASF24:
+ 1361 025c 73656564 		.ascii	"seed\000"
+ 1361      00
+ 1362              	.LASF23:
+ 1363 0261 5052535F 		.ascii	"PRS_2_WriteSeed\000"
+ 1363      325F5772 
+ 1363      69746553 
+ 1363      65656400 
+ 1364              	.LASF4:
+ 1365 0271 6C6F6E67 		.ascii	"long int\000"
+ 1365      20696E74 
+ 1365      00
+ 1366              	.LASF33:
+ 1367 027a 5052535F 		.ascii	"PRS_2_WritePulse1\000"
+ 1367      325F5772 
+ 1367      69746550 
+ 1367      756C7365 
+ 1367      3100
+ 1368              	.LASF0:
+ 1369 028c 7369676E 		.ascii	"signed char\000"
+ 1369      65642063 
+ 1369      68617200 
+ 1370              	.LASF36:
+ 1371 0298 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PRS_2.c\000"
+ 1371      6E657261 
+ 1371      7465645F 
+ 1371      536F7572 
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccgJyBpF.s 			page 34
+
+
+ 1371      63655C50 
+ 1372              	.LASF20:
+ 1373 02b9 5052535F 		.ascii	"PRS_2_SetPulse1Mode\000"
+ 1373      325F5365 
+ 1373      7450756C 
+ 1373      7365314D 
+ 1373      6F646500 
+ 1374              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

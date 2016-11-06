@@ -1,0 +1,859 @@
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"CapSense_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.bss
+  18              		.align	2
+  19              	CapSense_backup:
+  20 0000 00       		.space	1
+  21 0001 000000   		.section	.text.CapSense_SaveConfig,"ax",%progbits
+  22              		.align	2
+  23              		.global	CapSense_SaveConfig
+  24              		.code	16
+  25              		.thumb_func
+  26              		.type	CapSense_SaveConfig, %function
+  27              	CapSense_SaveConfig:
+  28              	.LFB35:
+  29              		.file 1 ".\\Generated_Source\\PSoC4\\CapSense_PM.c"
+   1:.\Generated_Source\PSoC4/CapSense_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/CapSense_PM.c **** * File Name: CapSense_PM.c
+   3:.\Generated_Source\PSoC4/CapSense_PM.c **** * Version 2.10
+   4:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+   5:.\Generated_Source\PSoC4/CapSense_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/CapSense_PM.c **** *  This file provides Sleep APIs for CapSense CSD Component.
+   7:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+   8:.\Generated_Source\PSoC4/CapSense_PM.c **** * Note:
+   9:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  10:.\Generated_Source\PSoC4/CapSense_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC4/CapSense_PM.c **** * Copyright 2014, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/CapSense_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC4/CapSense_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC4/CapSense_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/CapSense_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/CapSense_PM.c **** 
+  17:.\Generated_Source\PSoC4/CapSense_PM.c **** #include "CapSense.h"
+  18:.\Generated_Source\PSoC4/CapSense_PM.c **** 
+  19:.\Generated_Source\PSoC4/CapSense_PM.c **** static CapSense_BACKUP_STRUCT CapSense_backup =
+  20:.\Generated_Source\PSoC4/CapSense_PM.c **** {   
+  21:.\Generated_Source\PSoC4/CapSense_PM.c ****     0x00u, /* enableState; */
+  22:.\Generated_Source\PSoC4/CapSense_PM.c **** };
+  23:.\Generated_Source\PSoC4/CapSense_PM.c **** 
+  24:.\Generated_Source\PSoC4/CapSense_PM.c **** 
+  25:.\Generated_Source\PSoC4/CapSense_PM.c **** /*******************************************************************************
+  26:.\Generated_Source\PSoC4/CapSense_PM.c **** * Function Name: CapSense_SaveConfig
+  27:.\Generated_Source\PSoC4/CapSense_PM.c **** ********************************************************************************
+  28:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 2
+
+
+  29:.\Generated_Source\PSoC4/CapSense_PM.c **** * Summary:
+  30:.\Generated_Source\PSoC4/CapSense_PM.c **** *  Saves the customer configuration of CapSense.
+  31:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  32:.\Generated_Source\PSoC4/CapSense_PM.c **** * Parameters:
+  33:.\Generated_Source\PSoC4/CapSense_PM.c **** *  None
+  34:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  35:.\Generated_Source\PSoC4/CapSense_PM.c **** * Return:
+  36:.\Generated_Source\PSoC4/CapSense_PM.c **** *  None
+  37:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  38:.\Generated_Source\PSoC4/CapSense_PM.c **** * Global Variables:
+  39:.\Generated_Source\PSoC4/CapSense_PM.c **** *  CapSense_backup - used to save the component state before entering the  sleep 
+  40:.\Generated_Source\PSoC4/CapSense_PM.c **** *  mode and none-retention registers.
+  41:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  42:.\Generated_Source\PSoC4/CapSense_PM.c **** * Side Effects:
+  43:.\Generated_Source\PSoC4/CapSense_PM.c **** *  None
+  44:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  45:.\Generated_Source\PSoC4/CapSense_PM.c **** *******************************************************************************/
+  46:.\Generated_Source\PSoC4/CapSense_PM.c **** void CapSense_SaveConfig(void)
+  47:.\Generated_Source\PSoC4/CapSense_PM.c **** {
+  30              		.loc 1 47 0
+  31              		.cfi_startproc
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  48:.\Generated_Source\PSoC4/CapSense_PM.c **** 	if ((CapSense_CSD_CFG_REG & CapSense_CSD_CFG_ENABLE) != 0u)
+  38              		.loc 1 48 0
+  39 0004 044B     		ldr	r3, .L3
+  40 0006 1B68     		ldr	r3, [r3]
+  41 0008 002B     		cmp	r3, #0
+  42 000a 02DA     		bge	.L1
+  49:.\Generated_Source\PSoC4/CapSense_PM.c **** 	{
+  50:.\Generated_Source\PSoC4/CapSense_PM.c **** 		CapSense_backup.enableState = 1u;
+  43              		.loc 1 50 0
+  44 000c 034B     		ldr	r3, .L3+4
+  45 000e 0122     		mov	r2, #1
+  46 0010 1A70     		strb	r2, [r3]
+  47              	.L1:
+  51:.\Generated_Source\PSoC4/CapSense_PM.c **** 	}
+  52:.\Generated_Source\PSoC4/CapSense_PM.c **** }
+  48              		.loc 1 52 0
+  49 0012 BD46     		mov	sp, r7
+  50              		@ sp needed
+  51 0014 80BD     		pop	{r7, pc}
+  52              	.L4:
+  53 0016 C046     		.align	2
+  54              	.L3:
+  55 0018 04002840 		.word	1076363268
+  56 001c 00000000 		.word	CapSense_backup
+  57              		.cfi_endproc
+  58              	.LFE35:
+  59              		.size	CapSense_SaveConfig, .-CapSense_SaveConfig
+  60              		.section	.text.CapSense_Sleep,"ax",%progbits
+  61              		.align	2
+  62              		.global	CapSense_Sleep
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 3
+
+
+  63              		.code	16
+  64              		.thumb_func
+  65              		.type	CapSense_Sleep, %function
+  66              	CapSense_Sleep:
+  67              	.LFB36:
+  53:.\Generated_Source\PSoC4/CapSense_PM.c **** 
+  54:.\Generated_Source\PSoC4/CapSense_PM.c **** 
+  55:.\Generated_Source\PSoC4/CapSense_PM.c **** /*******************************************************************************
+  56:.\Generated_Source\PSoC4/CapSense_PM.c **** * Function Name: CapSense_Sleep
+  57:.\Generated_Source\PSoC4/CapSense_PM.c **** ********************************************************************************
+  58:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  59:.\Generated_Source\PSoC4/CapSense_PM.c **** * Summary:
+  60:.\Generated_Source\PSoC4/CapSense_PM.c **** *  Disables the Active mode power.
+  61:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  62:.\Generated_Source\PSoC4/CapSense_PM.c **** * Parameters:
+  63:.\Generated_Source\PSoC4/CapSense_PM.c **** *  None
+  64:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  65:.\Generated_Source\PSoC4/CapSense_PM.c **** * Return:
+  66:.\Generated_Source\PSoC4/CapSense_PM.c **** *  None
+  67:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  68:.\Generated_Source\PSoC4/CapSense_PM.c **** * Global Variables:
+  69:.\Generated_Source\PSoC4/CapSense_PM.c **** *  CapSense_backup - used to save the component state before entering the sleep 
+  70:.\Generated_Source\PSoC4/CapSense_PM.c **** *  mode.
+  71:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  72:.\Generated_Source\PSoC4/CapSense_PM.c **** *******************************************************************************/
+  73:.\Generated_Source\PSoC4/CapSense_PM.c **** void CapSense_Sleep(void)
+  74:.\Generated_Source\PSoC4/CapSense_PM.c **** {
+  68              		.loc 1 74 0
+  69              		.cfi_startproc
+  70 0000 80B5     		push	{r7, lr}
+  71              		.cfi_def_cfa_offset 8
+  72              		.cfi_offset 7, -8
+  73              		.cfi_offset 14, -4
+  74 0002 00AF     		add	r7, sp, #0
+  75              		.cfi_def_cfa_register 7
+  75:.\Generated_Source\PSoC4/CapSense_PM.c **** 	CapSense_SaveConfig();
+  76              		.loc 1 75 0
+  77 0004 FFF7FEFF 		bl	CapSense_SaveConfig
+  76:.\Generated_Source\PSoC4/CapSense_PM.c **** 		
+  77:.\Generated_Source\PSoC4/CapSense_PM.c **** 	/* Disable interrupt */
+  78:.\Generated_Source\PSoC4/CapSense_PM.c **** 	CyIntDisable(CapSense_ISR_NUMBER);
+  78              		.loc 1 78 0
+  79 0008 1020     		mov	r0, #16
+  80 000a FFF7FEFF 		bl	CyIntDisable
+  79:.\Generated_Source\PSoC4/CapSense_PM.c **** 	
+  80:.\Generated_Source\PSoC4/CapSense_PM.c **** 	CapSense_CSD_CFG_REG &= ~(CapSense_CSD_CFG_SENSE_COMP_EN | CapSense_CSD_CFG_SENSE_EN);
+  81              		.loc 1 80 0
+  82 000e 094B     		ldr	r3, .L6
+  83 0010 084A     		ldr	r2, .L6
+  84 0012 1168     		ldr	r1, [r2]
+  85 0014 084A     		ldr	r2, .L6+4
+  86 0016 0A40     		and	r2, r1
+  87 0018 1A60     		str	r2, [r3]
+  81:.\Generated_Source\PSoC4/CapSense_PM.c **** 	
+  82:.\Generated_Source\PSoC4/CapSense_PM.c **** 	#if(CapSense_IDAC_CNT == 2u)
+  83:.\Generated_Source\PSoC4/CapSense_PM.c **** 		CapSense_CSD_CFG_REG &= ~(CapSense_CSD_CFG_ENABLE);
+  88              		.loc 1 83 0
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 4
+
+
+  89 001a 064B     		ldr	r3, .L6
+  90 001c 054A     		ldr	r2, .L6
+  91 001e 1268     		ldr	r2, [r2]
+  92 0020 5200     		lsl	r2, r2, #1
+  93 0022 5208     		lsr	r2, r2, #1
+  94 0024 1A60     		str	r2, [r3]
+  84:.\Generated_Source\PSoC4/CapSense_PM.c **** 	#endif /* (CapSense_IDAC_CNT == 2u) */
+  85:.\Generated_Source\PSoC4/CapSense_PM.c **** 	
+  86:.\Generated_Source\PSoC4/CapSense_PM.c **** 	/* Disable Clocks */
+  87:.\Generated_Source\PSoC4/CapSense_PM.c ****     CapSense_SenseClk_Stop();
+  95              		.loc 1 87 0
+  96 0026 FFF7FEFF 		bl	CapSense_SenseClk_Stop
+  88:.\Generated_Source\PSoC4/CapSense_PM.c ****     CapSense_SampleClk_Stop();
+  97              		.loc 1 88 0
+  98 002a FFF7FEFF 		bl	CapSense_SampleClk_Stop
+  89:.\Generated_Source\PSoC4/CapSense_PM.c **** }
+  99              		.loc 1 89 0
+ 100 002e BD46     		mov	sp, r7
+ 101              		@ sp needed
+ 102 0030 80BD     		pop	{r7, pc}
+ 103              	.L7:
+ 104 0032 C046     		.align	2
+ 105              	.L6:
+ 106 0034 04002840 		.word	1076363268
+ 107 0038 FFEFF7FF 		.word	-528385
+ 108              		.cfi_endproc
+ 109              	.LFE36:
+ 110              		.size	CapSense_Sleep, .-CapSense_Sleep
+ 111              		.section	.text.CapSense_RestoreConfig,"ax",%progbits
+ 112              		.align	2
+ 113              		.global	CapSense_RestoreConfig
+ 114              		.code	16
+ 115              		.thumb_func
+ 116              		.type	CapSense_RestoreConfig, %function
+ 117              	CapSense_RestoreConfig:
+ 118              	.LFB37:
+  90:.\Generated_Source\PSoC4/CapSense_PM.c **** 
+  91:.\Generated_Source\PSoC4/CapSense_PM.c **** 
+  92:.\Generated_Source\PSoC4/CapSense_PM.c **** /*******************************************************************************
+  93:.\Generated_Source\PSoC4/CapSense_PM.c **** * Function Name: CapSense_RestoreConfig
+  94:.\Generated_Source\PSoC4/CapSense_PM.c **** ********************************************************************************
+  95:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  96:.\Generated_Source\PSoC4/CapSense_PM.c **** * Summary:
+  97:.\Generated_Source\PSoC4/CapSense_PM.c **** *  Restores the CapSense configuration.
+  98:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+  99:.\Generated_Source\PSoC4/CapSense_PM.c **** * Parameters:
+ 100:.\Generated_Source\PSoC4/CapSense_PM.c **** *  None
+ 101:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ 102:.\Generated_Source\PSoC4/CapSense_PM.c **** * Return:
+ 103:.\Generated_Source\PSoC4/CapSense_PM.c **** *  None
+ 104:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ 105:.\Generated_Source\PSoC4/CapSense_PM.c **** * Side Effects:
+ 106:.\Generated_Source\PSoC4/CapSense_PM.c **** *  Must be called only after CapSense_SaveConfig() routine. Otherwise 
+ 107:.\Generated_Source\PSoC4/CapSense_PM.c **** *  the component configuration will be overwritten with its initial setting.  
+ 108:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ 109:.\Generated_Source\PSoC4/CapSense_PM.c **** * Global Variables:
+ 110:.\Generated_Source\PSoC4/CapSense_PM.c **** *  CapSense_backup - used to save the component state before entering the sleep 
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 5
+
+
+ 111:.\Generated_Source\PSoC4/CapSense_PM.c **** *  mode and none-retention registers.
+ 112:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ 113:.\Generated_Source\PSoC4/CapSense_PM.c **** *******************************************************************************/
+ 114:.\Generated_Source\PSoC4/CapSense_PM.c **** void CapSense_RestoreConfig(void)
+ 115:.\Generated_Source\PSoC4/CapSense_PM.c **** {
+ 119              		.loc 1 115 0
+ 120              		.cfi_startproc
+ 121 0000 80B5     		push	{r7, lr}
+ 122              		.cfi_def_cfa_offset 8
+ 123              		.cfi_offset 7, -8
+ 124              		.cfi_offset 14, -4
+ 125 0002 00AF     		add	r7, sp, #0
+ 126              		.cfi_def_cfa_register 7
+ 116:.\Generated_Source\PSoC4/CapSense_PM.c **** 
+ 117:.\Generated_Source\PSoC4/CapSense_PM.c **** }
+ 127              		.loc 1 117 0
+ 128 0004 BD46     		mov	sp, r7
+ 129              		@ sp needed
+ 130 0006 80BD     		pop	{r7, pc}
+ 131              		.cfi_endproc
+ 132              	.LFE37:
+ 133              		.size	CapSense_RestoreConfig, .-CapSense_RestoreConfig
+ 134              		.section	.text.CapSense_Wakeup,"ax",%progbits
+ 135              		.align	2
+ 136              		.global	CapSense_Wakeup
+ 137              		.code	16
+ 138              		.thumb_func
+ 139              		.type	CapSense_Wakeup, %function
+ 140              	CapSense_Wakeup:
+ 141              	.LFB38:
+ 118:.\Generated_Source\PSoC4/CapSense_PM.c ****  
+ 119:.\Generated_Source\PSoC4/CapSense_PM.c ****  
+ 120:.\Generated_Source\PSoC4/CapSense_PM.c **** /*******************************************************************************
+ 121:.\Generated_Source\PSoC4/CapSense_PM.c **** * Function Name: CapSense_Wakeup
+ 122:.\Generated_Source\PSoC4/CapSense_PM.c **** ********************************************************************************
+ 123:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ 124:.\Generated_Source\PSoC4/CapSense_PM.c **** * Summary:
+ 125:.\Generated_Source\PSoC4/CapSense_PM.c **** *  Restores the CapSense configuration and non-retention register values. 
+ 126:.\Generated_Source\PSoC4/CapSense_PM.c **** *  Restores the enabled state of the component by setting the Active mode power template 
+ 127:.\Generated_Source\PSoC4/CapSense_PM.c **** *  bits for a number of components used within CapSense.
+ 128:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ 129:.\Generated_Source\PSoC4/CapSense_PM.c **** * Parameters:
+ 130:.\Generated_Source\PSoC4/CapSense_PM.c **** *  None
+ 131:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ 132:.\Generated_Source\PSoC4/CapSense_PM.c **** * Return:
+ 133:.\Generated_Source\PSoC4/CapSense_PM.c **** *  None
+ 134:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ 135:.\Generated_Source\PSoC4/CapSense_PM.c **** * Global Variables:
+ 136:.\Generated_Source\PSoC4/CapSense_PM.c **** *  CapSense_backup - used to save the component state before entering the sleep 
+ 137:.\Generated_Source\PSoC4/CapSense_PM.c **** *  mode and none-retention registers.
+ 138:.\Generated_Source\PSoC4/CapSense_PM.c **** *
+ 139:.\Generated_Source\PSoC4/CapSense_PM.c **** *******************************************************************************/
+ 140:.\Generated_Source\PSoC4/CapSense_PM.c **** void CapSense_Wakeup(void)
+ 141:.\Generated_Source\PSoC4/CapSense_PM.c **** {
+ 142              		.loc 1 141 0
+ 143              		.cfi_startproc
+ 144 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 6
+
+
+ 145              		.cfi_def_cfa_offset 8
+ 146              		.cfi_offset 7, -8
+ 147              		.cfi_offset 14, -4
+ 148 0002 00AF     		add	r7, sp, #0
+ 149              		.cfi_def_cfa_register 7
+ 142:.\Generated_Source\PSoC4/CapSense_PM.c **** 	/* Enable the Clocks */
+ 143:.\Generated_Source\PSoC4/CapSense_PM.c ****     CapSense_SenseClk_Start();
+ 150              		.loc 1 143 0
+ 151 0004 FF20     		mov	r0, #255
+ 152 0006 FFF7FEFF 		bl	CapSense_SenseClk_StartEx
+ 144:.\Generated_Source\PSoC4/CapSense_PM.c ****     CapSense_SampleClk_Start();
+ 153              		.loc 1 144 0
+ 154 000a FF20     		mov	r0, #255
+ 155 000c FFF7FEFF 		bl	CapSense_SampleClk_StartEx
+ 145:.\Generated_Source\PSoC4/CapSense_PM.c ****     
+ 146:.\Generated_Source\PSoC4/CapSense_PM.c **** 	/* Restore CapSense Enable state */
+ 147:.\Generated_Source\PSoC4/CapSense_PM.c ****     if (CapSense_backup.enableState != 0u)
+ 156              		.loc 1 147 0
+ 157 0010 034B     		ldr	r3, .L11
+ 158 0012 1B78     		ldrb	r3, [r3]
+ 159 0014 002B     		cmp	r3, #0
+ 160 0016 01D0     		beq	.L9
+ 148:.\Generated_Source\PSoC4/CapSense_PM.c ****     {
+ 149:.\Generated_Source\PSoC4/CapSense_PM.c ****         CapSense_Enable();
+ 161              		.loc 1 149 0
+ 162 0018 FFF7FEFF 		bl	CapSense_Enable
+ 163              	.L9:
+ 150:.\Generated_Source\PSoC4/CapSense_PM.c ****     }
+ 151:.\Generated_Source\PSoC4/CapSense_PM.c **** }
+ 164              		.loc 1 151 0
+ 165 001c BD46     		mov	sp, r7
+ 166              		@ sp needed
+ 167 001e 80BD     		pop	{r7, pc}
+ 168              	.L12:
+ 169              		.align	2
+ 170              	.L11:
+ 171 0020 00000000 		.word	CapSense_backup
+ 172              		.cfi_endproc
+ 173              	.LFE38:
+ 174              		.size	CapSense_Wakeup, .-CapSense_Wakeup
+ 175              		.text
+ 176              	.Letext0:
+ 177              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 178              		.file 3 ".\\Generated_Source\\PSoC4\\CapSense.h"
+ 179              		.section	.debug_info,"",%progbits
+ 180              	.Ldebug_info0:
+ 181 0000 20010000 		.4byte	0x120
+ 182 0004 0400     		.2byte	0x4
+ 183 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 184 000a 04       		.byte	0x4
+ 185 000b 01       		.uleb128 0x1
+ 186 000c B5000000 		.4byte	.LASF21
+ 187 0010 01       		.byte	0x1
+ 188 0011 8E000000 		.4byte	.LASF22
+ 189 0015 68010000 		.4byte	.LASF23
+ 190 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 191 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 7
+
+
+ 192 0021 00000000 		.4byte	.Ldebug_line0
+ 193 0025 02       		.uleb128 0x2
+ 194 0026 01       		.byte	0x1
+ 195 0027 06       		.byte	0x6
+ 196 0028 BF010000 		.4byte	.LASF0
+ 197 002c 02       		.uleb128 0x2
+ 198 002d 01       		.byte	0x1
+ 199 002e 08       		.byte	0x8
+ 200 002f 31010000 		.4byte	.LASF1
+ 201 0033 02       		.uleb128 0x2
+ 202 0034 02       		.byte	0x2
+ 203 0035 05       		.byte	0x5
+ 204 0036 E1010000 		.4byte	.LASF2
+ 205 003a 02       		.uleb128 0x2
+ 206 003b 02       		.byte	0x2
+ 207 003c 07       		.byte	0x7
+ 208 003d AC010000 		.4byte	.LASF3
+ 209 0041 02       		.uleb128 0x2
+ 210 0042 04       		.byte	0x4
+ 211 0043 05       		.byte	0x5
+ 212 0044 5F010000 		.4byte	.LASF4
+ 213 0048 02       		.uleb128 0x2
+ 214 0049 04       		.byte	0x4
+ 215 004a 07       		.byte	0x7
+ 216 004b 4E000000 		.4byte	.LASF5
+ 217 004f 02       		.uleb128 0x2
+ 218 0050 08       		.byte	0x8
+ 219 0051 05       		.byte	0x5
+ 220 0052 00000000 		.4byte	.LASF6
+ 221 0056 02       		.uleb128 0x2
+ 222 0057 08       		.byte	0x8
+ 223 0058 07       		.byte	0x7
+ 224 0059 60000000 		.4byte	.LASF7
+ 225 005d 03       		.uleb128 0x3
+ 226 005e 04       		.byte	0x4
+ 227 005f 05       		.byte	0x5
+ 228 0060 696E7400 		.ascii	"int\000"
+ 229 0064 02       		.uleb128 0x2
+ 230 0065 04       		.byte	0x4
+ 231 0066 07       		.byte	0x7
+ 232 0067 EB010000 		.4byte	.LASF8
+ 233 006b 04       		.uleb128 0x4
+ 234 006c 48000000 		.4byte	.LASF9
+ 235 0070 02       		.byte	0x2
+ 236 0071 A1       		.byte	0xa1
+ 237 0072 2C000000 		.4byte	0x2c
+ 238 0076 04       		.uleb128 0x4
+ 239 0077 0E000000 		.4byte	.LASF10
+ 240 007b 02       		.byte	0x2
+ 241 007c A3       		.byte	0xa3
+ 242 007d 48000000 		.4byte	0x48
+ 243 0081 02       		.uleb128 0x2
+ 244 0082 04       		.byte	0x4
+ 245 0083 04       		.byte	0x4
+ 246 0084 DB010000 		.4byte	.LASF11
+ 247 0088 02       		.uleb128 0x2
+ 248 0089 08       		.byte	0x8
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 8
+
+
+ 249 008a 04       		.byte	0x4
+ 250 008b 58010000 		.4byte	.LASF12
+ 251 008f 02       		.uleb128 0x2
+ 252 0090 01       		.byte	0x1
+ 253 0091 08       		.byte	0x8
+ 254 0092 3F010000 		.4byte	.LASF13
+ 255 0096 05       		.uleb128 0x5
+ 256 0097 A6010000 		.4byte	.LASF14
+ 257 009b 02       		.byte	0x2
+ 258 009c 4D01     		.2byte	0x14d
+ 259 009e A2000000 		.4byte	0xa2
+ 260 00a2 06       		.uleb128 0x6
+ 261 00a3 76000000 		.4byte	0x76
+ 262 00a7 02       		.uleb128 0x2
+ 263 00a8 04       		.byte	0x4
+ 264 00a9 07       		.byte	0x7
+ 265 00aa F8010000 		.4byte	.LASF15
+ 266 00ae 07       		.uleb128 0x7
+ 267 00af 01       		.byte	0x1
+ 268 00b0 03       		.byte	0x3
+ 269 00b1 8D       		.byte	0x8d
+ 270 00b2 C3000000 		.4byte	0xc3
+ 271 00b6 08       		.uleb128 0x8
+ 272 00b7 15000000 		.4byte	.LASF24
+ 273 00bb 03       		.byte	0x3
+ 274 00bc 8F       		.byte	0x8f
+ 275 00bd 6B000000 		.4byte	0x6b
+ 276 00c1 00       		.byte	0
+ 277 00c2 00       		.byte	0
+ 278 00c3 04       		.uleb128 0x4
+ 279 00c4 31000000 		.4byte	.LASF16
+ 280 00c8 03       		.byte	0x3
+ 281 00c9 90       		.byte	0x90
+ 282 00ca AE000000 		.4byte	0xae
+ 283 00ce 09       		.uleb128 0x9
+ 284 00cf 44010000 		.4byte	.LASF17
+ 285 00d3 01       		.byte	0x1
+ 286 00d4 2E       		.byte	0x2e
+ 287 00d5 00000000 		.4byte	.LFB35
+ 288 00d9 20000000 		.4byte	.LFE35-.LFB35
+ 289 00dd 01       		.uleb128 0x1
+ 290 00de 9C       		.byte	0x9c
+ 291 00df 0A       		.uleb128 0xa
+ 292 00e0 01020000 		.4byte	.LASF18
+ 293 00e4 01       		.byte	0x1
+ 294 00e5 49       		.byte	0x49
+ 295 00e6 00000000 		.4byte	.LFB36
+ 296 00ea 3C000000 		.4byte	.LFE36-.LFB36
+ 297 00ee 01       		.uleb128 0x1
+ 298 00ef 9C       		.byte	0x9c
+ 299 00f0 09       		.uleb128 0x9
+ 300 00f1 77000000 		.4byte	.LASF19
+ 301 00f5 01       		.byte	0x1
+ 302 00f6 72       		.byte	0x72
+ 303 00f7 00000000 		.4byte	.LFB37
+ 304 00fb 08000000 		.4byte	.LFE37-.LFB37
+ 305 00ff 01       		.uleb128 0x1
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 9
+
+
+ 306 0100 9C       		.byte	0x9c
+ 307 0101 0A       		.uleb128 0xa
+ 308 0102 21000000 		.4byte	.LASF20
+ 309 0106 01       		.byte	0x1
+ 310 0107 8C       		.byte	0x8c
+ 311 0108 00000000 		.4byte	.LFB38
+ 312 010c 24000000 		.4byte	.LFE38-.LFB38
+ 313 0110 01       		.uleb128 0x1
+ 314 0111 9C       		.byte	0x9c
+ 315 0112 0B       		.uleb128 0xb
+ 316 0113 CB010000 		.4byte	.LASF25
+ 317 0117 01       		.byte	0x1
+ 318 0118 13       		.byte	0x13
+ 319 0119 C3000000 		.4byte	0xc3
+ 320 011d 05       		.uleb128 0x5
+ 321 011e 03       		.byte	0x3
+ 322 011f 00000000 		.4byte	CapSense_backup
+ 323 0123 00       		.byte	0
+ 324              		.section	.debug_abbrev,"",%progbits
+ 325              	.Ldebug_abbrev0:
+ 326 0000 01       		.uleb128 0x1
+ 327 0001 11       		.uleb128 0x11
+ 328 0002 01       		.byte	0x1
+ 329 0003 25       		.uleb128 0x25
+ 330 0004 0E       		.uleb128 0xe
+ 331 0005 13       		.uleb128 0x13
+ 332 0006 0B       		.uleb128 0xb
+ 333 0007 03       		.uleb128 0x3
+ 334 0008 0E       		.uleb128 0xe
+ 335 0009 1B       		.uleb128 0x1b
+ 336 000a 0E       		.uleb128 0xe
+ 337 000b 55       		.uleb128 0x55
+ 338 000c 17       		.uleb128 0x17
+ 339 000d 11       		.uleb128 0x11
+ 340 000e 01       		.uleb128 0x1
+ 341 000f 10       		.uleb128 0x10
+ 342 0010 17       		.uleb128 0x17
+ 343 0011 00       		.byte	0
+ 344 0012 00       		.byte	0
+ 345 0013 02       		.uleb128 0x2
+ 346 0014 24       		.uleb128 0x24
+ 347 0015 00       		.byte	0
+ 348 0016 0B       		.uleb128 0xb
+ 349 0017 0B       		.uleb128 0xb
+ 350 0018 3E       		.uleb128 0x3e
+ 351 0019 0B       		.uleb128 0xb
+ 352 001a 03       		.uleb128 0x3
+ 353 001b 0E       		.uleb128 0xe
+ 354 001c 00       		.byte	0
+ 355 001d 00       		.byte	0
+ 356 001e 03       		.uleb128 0x3
+ 357 001f 24       		.uleb128 0x24
+ 358 0020 00       		.byte	0
+ 359 0021 0B       		.uleb128 0xb
+ 360 0022 0B       		.uleb128 0xb
+ 361 0023 3E       		.uleb128 0x3e
+ 362 0024 0B       		.uleb128 0xb
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 10
+
+
+ 363 0025 03       		.uleb128 0x3
+ 364 0026 08       		.uleb128 0x8
+ 365 0027 00       		.byte	0
+ 366 0028 00       		.byte	0
+ 367 0029 04       		.uleb128 0x4
+ 368 002a 16       		.uleb128 0x16
+ 369 002b 00       		.byte	0
+ 370 002c 03       		.uleb128 0x3
+ 371 002d 0E       		.uleb128 0xe
+ 372 002e 3A       		.uleb128 0x3a
+ 373 002f 0B       		.uleb128 0xb
+ 374 0030 3B       		.uleb128 0x3b
+ 375 0031 0B       		.uleb128 0xb
+ 376 0032 49       		.uleb128 0x49
+ 377 0033 13       		.uleb128 0x13
+ 378 0034 00       		.byte	0
+ 379 0035 00       		.byte	0
+ 380 0036 05       		.uleb128 0x5
+ 381 0037 16       		.uleb128 0x16
+ 382 0038 00       		.byte	0
+ 383 0039 03       		.uleb128 0x3
+ 384 003a 0E       		.uleb128 0xe
+ 385 003b 3A       		.uleb128 0x3a
+ 386 003c 0B       		.uleb128 0xb
+ 387 003d 3B       		.uleb128 0x3b
+ 388 003e 05       		.uleb128 0x5
+ 389 003f 49       		.uleb128 0x49
+ 390 0040 13       		.uleb128 0x13
+ 391 0041 00       		.byte	0
+ 392 0042 00       		.byte	0
+ 393 0043 06       		.uleb128 0x6
+ 394 0044 35       		.uleb128 0x35
+ 395 0045 00       		.byte	0
+ 396 0046 49       		.uleb128 0x49
+ 397 0047 13       		.uleb128 0x13
+ 398 0048 00       		.byte	0
+ 399 0049 00       		.byte	0
+ 400 004a 07       		.uleb128 0x7
+ 401 004b 13       		.uleb128 0x13
+ 402 004c 01       		.byte	0x1
+ 403 004d 0B       		.uleb128 0xb
+ 404 004e 0B       		.uleb128 0xb
+ 405 004f 3A       		.uleb128 0x3a
+ 406 0050 0B       		.uleb128 0xb
+ 407 0051 3B       		.uleb128 0x3b
+ 408 0052 0B       		.uleb128 0xb
+ 409 0053 01       		.uleb128 0x1
+ 410 0054 13       		.uleb128 0x13
+ 411 0055 00       		.byte	0
+ 412 0056 00       		.byte	0
+ 413 0057 08       		.uleb128 0x8
+ 414 0058 0D       		.uleb128 0xd
+ 415 0059 00       		.byte	0
+ 416 005a 03       		.uleb128 0x3
+ 417 005b 0E       		.uleb128 0xe
+ 418 005c 3A       		.uleb128 0x3a
+ 419 005d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 11
+
+
+ 420 005e 3B       		.uleb128 0x3b
+ 421 005f 0B       		.uleb128 0xb
+ 422 0060 49       		.uleb128 0x49
+ 423 0061 13       		.uleb128 0x13
+ 424 0062 38       		.uleb128 0x38
+ 425 0063 0B       		.uleb128 0xb
+ 426 0064 00       		.byte	0
+ 427 0065 00       		.byte	0
+ 428 0066 09       		.uleb128 0x9
+ 429 0067 2E       		.uleb128 0x2e
+ 430 0068 00       		.byte	0
+ 431 0069 3F       		.uleb128 0x3f
+ 432 006a 19       		.uleb128 0x19
+ 433 006b 03       		.uleb128 0x3
+ 434 006c 0E       		.uleb128 0xe
+ 435 006d 3A       		.uleb128 0x3a
+ 436 006e 0B       		.uleb128 0xb
+ 437 006f 3B       		.uleb128 0x3b
+ 438 0070 0B       		.uleb128 0xb
+ 439 0071 27       		.uleb128 0x27
+ 440 0072 19       		.uleb128 0x19
+ 441 0073 11       		.uleb128 0x11
+ 442 0074 01       		.uleb128 0x1
+ 443 0075 12       		.uleb128 0x12
+ 444 0076 06       		.uleb128 0x6
+ 445 0077 40       		.uleb128 0x40
+ 446 0078 18       		.uleb128 0x18
+ 447 0079 9742     		.uleb128 0x2117
+ 448 007b 19       		.uleb128 0x19
+ 449 007c 00       		.byte	0
+ 450 007d 00       		.byte	0
+ 451 007e 0A       		.uleb128 0xa
+ 452 007f 2E       		.uleb128 0x2e
+ 453 0080 00       		.byte	0
+ 454 0081 3F       		.uleb128 0x3f
+ 455 0082 19       		.uleb128 0x19
+ 456 0083 03       		.uleb128 0x3
+ 457 0084 0E       		.uleb128 0xe
+ 458 0085 3A       		.uleb128 0x3a
+ 459 0086 0B       		.uleb128 0xb
+ 460 0087 3B       		.uleb128 0x3b
+ 461 0088 0B       		.uleb128 0xb
+ 462 0089 27       		.uleb128 0x27
+ 463 008a 19       		.uleb128 0x19
+ 464 008b 11       		.uleb128 0x11
+ 465 008c 01       		.uleb128 0x1
+ 466 008d 12       		.uleb128 0x12
+ 467 008e 06       		.uleb128 0x6
+ 468 008f 40       		.uleb128 0x40
+ 469 0090 18       		.uleb128 0x18
+ 470 0091 9642     		.uleb128 0x2116
+ 471 0093 19       		.uleb128 0x19
+ 472 0094 00       		.byte	0
+ 473 0095 00       		.byte	0
+ 474 0096 0B       		.uleb128 0xb
+ 475 0097 34       		.uleb128 0x34
+ 476 0098 00       		.byte	0
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 12
+
+
+ 477 0099 03       		.uleb128 0x3
+ 478 009a 0E       		.uleb128 0xe
+ 479 009b 3A       		.uleb128 0x3a
+ 480 009c 0B       		.uleb128 0xb
+ 481 009d 3B       		.uleb128 0x3b
+ 482 009e 0B       		.uleb128 0xb
+ 483 009f 49       		.uleb128 0x49
+ 484 00a0 13       		.uleb128 0x13
+ 485 00a1 02       		.uleb128 0x2
+ 486 00a2 18       		.uleb128 0x18
+ 487 00a3 00       		.byte	0
+ 488 00a4 00       		.byte	0
+ 489 00a5 00       		.byte	0
+ 490              		.section	.debug_aranges,"",%progbits
+ 491 0000 34000000 		.4byte	0x34
+ 492 0004 0200     		.2byte	0x2
+ 493 0006 00000000 		.4byte	.Ldebug_info0
+ 494 000a 04       		.byte	0x4
+ 495 000b 00       		.byte	0
+ 496 000c 0000     		.2byte	0
+ 497 000e 0000     		.2byte	0
+ 498 0010 00000000 		.4byte	.LFB35
+ 499 0014 20000000 		.4byte	.LFE35-.LFB35
+ 500 0018 00000000 		.4byte	.LFB36
+ 501 001c 3C000000 		.4byte	.LFE36-.LFB36
+ 502 0020 00000000 		.4byte	.LFB37
+ 503 0024 08000000 		.4byte	.LFE37-.LFB37
+ 504 0028 00000000 		.4byte	.LFB38
+ 505 002c 24000000 		.4byte	.LFE38-.LFB38
+ 506 0030 00000000 		.4byte	0
+ 507 0034 00000000 		.4byte	0
+ 508              		.section	.debug_ranges,"",%progbits
+ 509              	.Ldebug_ranges0:
+ 510 0000 00000000 		.4byte	.LFB35
+ 511 0004 20000000 		.4byte	.LFE35
+ 512 0008 00000000 		.4byte	.LFB36
+ 513 000c 3C000000 		.4byte	.LFE36
+ 514 0010 00000000 		.4byte	.LFB37
+ 515 0014 08000000 		.4byte	.LFE37
+ 516 0018 00000000 		.4byte	.LFB38
+ 517 001c 24000000 		.4byte	.LFE38
+ 518 0020 00000000 		.4byte	0
+ 519 0024 00000000 		.4byte	0
+ 520              		.section	.debug_line,"",%progbits
+ 521              	.Ldebug_line0:
+ 522 0000 AD000000 		.section	.debug_str,"MS",%progbits,1
+ 522      02005800 
+ 522      00000201 
+ 522      FB0E0D00 
+ 522      01010101 
+ 523              	.LASF6:
+ 524 0000 6C6F6E67 		.ascii	"long long int\000"
+ 524      206C6F6E 
+ 524      6720696E 
+ 524      7400
+ 525              	.LASF10:
+ 526 000e 75696E74 		.ascii	"uint32\000"
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 13
+
+
+ 526      333200
+ 527              	.LASF24:
+ 528 0015 656E6162 		.ascii	"enableState\000"
+ 528      6C655374 
+ 528      61746500 
+ 529              	.LASF20:
+ 530 0021 43617053 		.ascii	"CapSense_Wakeup\000"
+ 530      656E7365 
+ 530      5F57616B 
+ 530      65757000 
+ 531              	.LASF16:
+ 532 0031 43617053 		.ascii	"CapSense_BACKUP_STRUCT\000"
+ 532      656E7365 
+ 532      5F424143 
+ 532      4B55505F 
+ 532      53545255 
+ 533              	.LASF9:
+ 534 0048 75696E74 		.ascii	"uint8\000"
+ 534      3800
+ 535              	.LASF5:
+ 536 004e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 536      20756E73 
+ 536      69676E65 
+ 536      6420696E 
+ 536      7400
+ 537              	.LASF7:
+ 538 0060 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 538      206C6F6E 
+ 538      6720756E 
+ 538      7369676E 
+ 538      65642069 
+ 539              	.LASF19:
+ 540 0077 43617053 		.ascii	"CapSense_RestoreConfig\000"
+ 540      656E7365 
+ 540      5F526573 
+ 540      746F7265 
+ 540      436F6E66 
+ 541              	.LASF22:
+ 542 008e 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\CapSense_PM.c\000"
+ 542      6E657261 
+ 542      7465645F 
+ 542      536F7572 
+ 542      63655C50 
+ 543              	.LASF21:
+ 544 00b5 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 544      4320342E 
+ 544      382E3420 
+ 544      32303134 
+ 544      30353236 
+ 545 00e8 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 545      20726576 
+ 545      6973696F 
+ 545      6E203231 
+ 545      31333538 
+ 546 011b 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 546      66756E63 
+ 546      74696F6E 
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 14
+
+
+ 546      2D736563 
+ 546      74696F6E 
+ 547              	.LASF1:
+ 548 0131 756E7369 		.ascii	"unsigned char\000"
+ 548      676E6564 
+ 548      20636861 
+ 548      7200
+ 549              	.LASF13:
+ 550 013f 63686172 		.ascii	"char\000"
+ 550      00
+ 551              	.LASF17:
+ 552 0144 43617053 		.ascii	"CapSense_SaveConfig\000"
+ 552      656E7365 
+ 552      5F536176 
+ 552      65436F6E 
+ 552      66696700 
+ 553              	.LASF12:
+ 554 0158 646F7562 		.ascii	"double\000"
+ 554      6C6500
+ 555              	.LASF4:
+ 556 015f 6C6F6E67 		.ascii	"long int\000"
+ 556      20696E74 
+ 556      00
+ 557              	.LASF23:
+ 558 0168 433A5C55 		.ascii	"C:\\Users\\Manisha Goyal\\Desktop\\lab4\\BLE Lab 4\\"
+ 558      73657273 
+ 558      5C4D616E 
+ 558      69736861 
+ 558      20476F79 
+ 559 0196 424C4520 		.ascii	"BLE Lab 4.cydsn\000"
+ 559      4C616220 
+ 559      342E6379 
+ 559      64736E00 
+ 560              	.LASF14:
+ 561 01a6 72656733 		.ascii	"reg32\000"
+ 561      3200
+ 562              	.LASF3:
+ 563 01ac 73686F72 		.ascii	"short unsigned int\000"
+ 563      7420756E 
+ 563      7369676E 
+ 563      65642069 
+ 563      6E7400
+ 564              	.LASF0:
+ 565 01bf 7369676E 		.ascii	"signed char\000"
+ 565      65642063 
+ 565      68617200 
+ 566              	.LASF25:
+ 567 01cb 43617053 		.ascii	"CapSense_backup\000"
+ 567      656E7365 
+ 567      5F626163 
+ 567      6B757000 
+ 568              	.LASF11:
+ 569 01db 666C6F61 		.ascii	"float\000"
+ 569      7400
+ 570              	.LASF2:
+ 571 01e1 73686F72 		.ascii	"short int\000"
+ 571      7420696E 
+ARM GAS  C:\Users\MANISH~1\AppData\Local\Temp\ccrPSB4N.s 			page 15
+
+
+ 571      7400
+ 572              	.LASF8:
+ 573 01eb 756E7369 		.ascii	"unsigned int\000"
+ 573      676E6564 
+ 573      20696E74 
+ 573      00
+ 574              	.LASF15:
+ 575 01f8 73697A65 		.ascii	"sizetype\000"
+ 575      74797065 
+ 575      00
+ 576              	.LASF18:
+ 577 0201 43617053 		.ascii	"CapSense_Sleep\000"
+ 577      656E7365 
+ 577      5F536C65 
+ 577      657000
+ 578              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
